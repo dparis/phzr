@@ -3,11 +3,11 @@
 (def polygon-get-properties
   {:area "area"
    :closed "closed"
-   :type "type"
-   :points "points"})
+   :points "points"
+   :type "type"})
 
 (def polygon-set-properties
   {:area "area"
    :closed "closed"
-   :type "type"
-   :points "points"})
+   :points "points"
+   :type "type"})

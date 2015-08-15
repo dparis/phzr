@@ -16,19 +16,6 @@
     (.In back
          (clj->phaser k)))))
 
-(defn out
-  "Back ease-out.
-
-  Parameters:
-    * back (Phaser.Easing.Back) - Targeted instance for method
-    * k (number) - The value to be tweened.
-
-  Returns:  number - The tweened value."
-  ([back k]
-   (phaser->clj
-    (.Out back
-          (clj->phaser k)))))
-
 (defn in-out
   "Back ease-in/out.
 
@@ -41,3 +28,16 @@
    (phaser->clj
     (.InOut back
             (clj->phaser k)))))
+
+(defn out
+  "Back ease-out.
+
+  Parameters:
+    * back (Phaser.Easing.Back) - Targeted instance for method
+    * k (number) - The value to be tweened.
+
+  Returns:  number - The tweened value."
+  ([back k]
+   (phaser->clj
+    (.Out back
+          (clj->phaser k)))))

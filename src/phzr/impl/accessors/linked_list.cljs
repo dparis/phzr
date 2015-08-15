@@ -1,15 +1,15 @@
 (ns phzr.impl.accessors.linked-list)
 
 (def linked-list-get-properties
-  {:next "next"
-   :prev "prev"
-   :first "first"
+  {:first "first"
    :last "last"
+   :next "next"
+   :prev "prev"
    :total "total"})
 
 (def linked-list-set-properties
-  {:next "next"
-   :prev "prev"
-   :first "first"
+  {:first "first"
    :last "last"
+   :next "next"
+   :prev "prev"
    :total "total"})

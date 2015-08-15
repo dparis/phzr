@@ -1,17 +1,17 @@
 (ns phzr.impl.accessors.image-collection)
 
 (def image-collection-get-properties
-  {:properties "properties"
-   :image-width "imageWidth"
-   :firstgid "firstgid"
-   :images "images"
-   :name "name"
+  {:firstgid "firstgid"
    :image-height "imageHeight"
    :image-margin "imageMargin"
-   :total "total"
-   :image-spacing "imageSpacing"})
+   :image-spacing "imageSpacing"
+   :image-width "imageWidth"
+   :images "images"
+   :name "name"
+   :properties "properties"
+   :total "total"})
 
 (def image-collection-set-properties
-  {:name "name"
-   :firstgid "firstgid"
+  {:firstgid "firstgid"
+   :name "name"
    :properties "properties"})

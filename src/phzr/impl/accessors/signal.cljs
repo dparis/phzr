@@ -1,9 +1,9 @@
 (ns phzr.impl.accessors.signal)
 
 (def signal-get-properties
-  {:memorize "memorize"
-   :active "active"})
+  {:active "active"
+   :memorize "memorize"})
 
 (def signal-set-properties
-  {:memorize "memorize"
-   :active "active"})
+  {:active "active"
+   :memorize "memorize"})

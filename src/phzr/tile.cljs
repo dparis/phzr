@@ -36,6 +36,23 @@
                     (clj->phaser x)
                     (clj->phaser y)))))
 
+(defn copy
+  "Copies the tile data and properties from the given tile to this tile.
+
+  Parameters:
+    * tile (Phaser.Tile) - Targeted instance for method
+    * tile (Phaser.Tile) - The tile to copy from."
+  ([tile tile]
+   (phaser->clj
+    (.copy tile
+           (clj->phaser tile)))))
+
+(defn destroy
+  "Clean up memory."
+  ([tile]
+   (phaser->clj
+    (.destroy tile))))
+
 (defn intersects
   "Check for intersection with this tile.
 
@@ -53,25 +70,26 @@
                  (clj->phaser right)
                  (clj->phaser bottom)))))
 
-(defn set-collision-callback
-  "Set a callback to be called when this tile is hit by an object.
-  The callback must true true for collision processing to take place.
+(defn is-interesting
+  "Is this tile interesting?
 
   Parameters:
     * tile (Phaser.Tile) - Targeted instance for method
-    * callback (function) - Callback function.
-    * context (object) - Callback will be called within this context."
-  ([tile callback context]
-   (phaser->clj
-    (.setCollisionCallback tile
-                           (clj->phaser callback)
-                           (clj->phaser context)))))
+    * collides (boolean) - If true will check any collides value.
+    * faces (boolean) - If true will check any face value.
 
-(defn destroy
-  "Clean up memory."
+  Returns:  boolean - True if the Tile is interesting, otherwise false."
+  ([tile collides faces]
+   (phaser->clj
+    (.isInteresting tile
+                    (clj->phaser collides)
+                    (clj->phaser faces)))))
+
+(defn reset-collision
+  "Reset collision status flags."
   ([tile]
    (phaser->clj
-    (.destroy tile))))
+    (.resetCollision tile))))
 
 (defn set-collision
   "Sets the collision flags for each side of this tile and updates the interesting faces list.
@@ -90,34 +108,16 @@
                    (clj->phaser up)
                    (clj->phaser down)))))
 
-(defn reset-collision
-  "Reset collision status flags."
-  ([tile]
-   (phaser->clj
-    (.resetCollision tile))))
-
-(defn is-interesting
-  "Is this tile interesting?
+(defn set-collision-callback
+  "Set a callback to be called when this tile is hit by an object.
+  The callback must true true for collision processing to take place.
 
   Parameters:
     * tile (Phaser.Tile) - Targeted instance for method
-    * collides (boolean) - If true will check any collides value.
-    * faces (boolean) - If true will check any face value.
-
-  Returns:  boolean - True if the Tile is interesting, otherwise false."
-  ([tile collides faces]
+    * callback (function) - Callback function.
+    * context (object) - Callback will be called within this context."
+  ([tile callback context]
    (phaser->clj
-    (.isInteresting tile
-                    (clj->phaser collides)
-                    (clj->phaser faces)))))
-
-(defn copy
-  "Copies the tile data and properties from the given tile to this tile.
-
-  Parameters:
-    * tile (Phaser.Tile) - Targeted instance for method
-    * tile (Phaser.Tile) - The tile to copy from."
-  ([tile tile]
-   (phaser->clj
-    (.copy tile
-           (clj->phaser tile)))))
+    (.setCollisionCallback tile
+                           (clj->phaser callback)
+                           (clj->phaser context)))))

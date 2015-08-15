@@ -11,16 +11,11 @@
   ([gl]
    (js/PIXI.WebGLBlendModeManager. (clj->phaser gl))))
 
-(defn set-context
-  "Sets the WebGL Context.
-
-  Parameters:
-    * webgl-blend-mode-manager (PIXI.WebGLBlendModeManager) - Targeted instance for method
-    * gl (WebGLContext) - the current WebGL drawing context"
-  ([webgl-blend-mode-manager gl]
+(defn destroy
+  "Destroys this object."
+  ([webgl-blend-mode-manager]
    (phaser->clj
-    (.setContext webgl-blend-mode-manager
-                 (clj->phaser gl)))))
+    (.destroy webgl-blend-mode-manager))))
 
 (defn set-blend-mode
   "Sets-up the given blendMode from WebGL's point of view.
@@ -33,8 +28,13 @@
     (.setBlendMode webgl-blend-mode-manager
                    (clj->phaser blend-mode)))))
 
-(defn destroy
-  "Destroys this object."
-  ([webgl-blend-mode-manager]
+(defn set-context
+  "Sets the WebGL Context.
+
+  Parameters:
+    * webgl-blend-mode-manager (PIXI.WebGLBlendModeManager) - Targeted instance for method
+    * gl (WebGLContext) - the current WebGL drawing context"
+  ([webgl-blend-mode-manager gl]
    (phaser->clj
-    (.destroy webgl-blend-mode-manager))))
+    (.setContext webgl-blend-mode-manager
+                 (clj->phaser gl)))))

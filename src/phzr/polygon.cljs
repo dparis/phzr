@@ -6,9 +6,9 @@
 
 (defn ->Polygon
   "Creates a new Polygon.
-  
+
   The points can be set from a variety of formats:
-  
+
   - An array of Point objects: `[new Phaser.Point(x1, y1), ...]`
   - An array of objects with public x/y properties: `[obj1, obj2, ...]`
   - An array of paired numbers that represent point coordinates: `[x1,y1, x2,y2, ...]`
@@ -21,37 +21,13 @@
   ([points]
    (js/Phaser.Polygon. (clj->phaser points))))
 
-(defn to-number-array
-  "Export the points as an array of flat numbers, following the sequence [ x,y, x,y, x,y ]
-
-  Parameters:
-    * polygon (Phaser.Polygon) - Targeted instance for method
-    * output (array) {optional}  - The array to append the points to. If not specified a new array will be created.
-
-  Returns:  array - The flattened array."
-  ([polygon]
-   (phaser->clj
-    (.toNumberArray polygon)))
-  ([polygon output]
-   (phaser->clj
-    (.toNumberArray polygon
-                    (clj->phaser output)))))
-
-(defn flatten
-  "Flattens this Polygon so the points are a sequence of numbers. Any Point objects found are removed and replaced with two numbers.
-
-  Returns:  Phaser.Polygon - This Polygon object"
-  ([polygon]
-   (phaser->clj
-    (.flatten polygon))))
-
 (defn clone
   "Creates a copy of the given Polygon.
   This is a deep clone, the resulting copy contains new Phaser.Point objects
 
   Parameters:
     * polygon (Phaser.Polygon) - Targeted instance for method
-    * output (Phaser.Polygon) {optional}  - The polygon to update. If not specified a new polygon will be created.
+    * output (Phaser.Polygon) {optional} - The polygon to update. If not specified a new polygon will be created.
 
   Returns:  Phaser.Polygon - The cloned (`output`) polygon object."
   ([polygon]
@@ -77,18 +53,26 @@
                (clj->phaser x)
                (clj->phaser y)))))
 
+(defn flatten
+  "Flattens this Polygon so the points are a sequence of numbers. Any Point objects found are removed and replaced with two numbers.
+
+  Returns:  Phaser.Polygon - This Polygon object"
+  ([polygon]
+   (phaser->clj
+    (.flatten polygon))))
+
 (defn set-to
   "Sets this Polygon to the given points.
-  
+
   The points can be set from a variety of formats:
-  
+
   - An array of Point objects: `[new Phaser.Point(x1, y1), ...]`
   - An array of objects with public x/y properties: `[obj1, obj2, ...]`
   - An array of paired numbers that represent point coordinates: `[x1,y1, x2,y2, ...]`
   - As separate Point arguments: `setTo(new Phaser.Point(x1, y1), ...)`
   - As separate objects with public x/y properties arguments: `setTo(obj1, obj2, ...)`
   - As separate arguments representing point coordinates: `setTo(x1,y1, x2,y2, ...)`
-  
+
   `setTo` may also be called without any arguments to remove all points.
 
   Parameters:
@@ -100,3 +84,19 @@
    (phaser->clj
     (.setTo polygon
             (clj->phaser points)))))
+
+(defn to-number-array
+  "Export the points as an array of flat numbers, following the sequence [ x,y, x,y, x,y ]
+
+  Parameters:
+    * polygon (Phaser.Polygon) - Targeted instance for method
+    * output (array) {optional} - The array to append the points to. If not specified a new array will be created.
+
+  Returns:  array - The flattened array."
+  ([polygon]
+   (phaser->clj
+    (.toNumberArray polygon)))
+  ([polygon output]
+   (phaser->clj
+    (.toNumberArray polygon
+                    (clj->phaser output)))))

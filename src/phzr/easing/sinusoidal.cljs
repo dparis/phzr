@@ -16,19 +16,6 @@
     (.In sinusoidal
          (clj->phaser k)))))
 
-(defn out
-  "Sinusoidal ease-out.
-
-  Parameters:
-    * sinusoidal (Phaser.Easing.Sinusoidal) - Targeted instance for method
-    * k (number) - The value to be tweened.
-
-  Returns:  number - The tweened value."
-  ([sinusoidal k]
-   (phaser->clj
-    (.Out sinusoidal
-          (clj->phaser k)))))
-
 (defn in-out
   "Sinusoidal ease-in/out.
 
@@ -41,3 +28,16 @@
    (phaser->clj
     (.InOut sinusoidal
             (clj->phaser k)))))
+
+(defn out
+  "Sinusoidal ease-out.
+
+  Parameters:
+    * sinusoidal (Phaser.Easing.Sinusoidal) - Targeted instance for method
+    * k (number) - The value to be tweened.
+
+  Returns:  number - The tweened value."
+  ([sinusoidal k]
+   (phaser->clj
+    (.Out sinusoidal
+          (clj->phaser k)))))

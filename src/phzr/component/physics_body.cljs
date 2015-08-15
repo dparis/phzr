@@ -9,16 +9,16 @@
   ([]
    (js/Phaser.Component.PhysicsBody.)))
 
-(defn pre-update-
-  "The PhysicsBody component preUpdate handler.
-  Called automatically by the Game Object."
-  ([]
-   (phaser->clj
-    (.preUpdate js/Phaser.Component.PhysicsBody))))
-
 (defn post-update-
   "The PhysicsBody component postUpdate handler.
   Called automatically by the Game Object."
   ([]
    (phaser->clj
     (.postUpdate js/Phaser.Component.PhysicsBody))))
+
+(defn pre-update-
+  "The PhysicsBody component preUpdate handler.
+  Called automatically by the Game Object."
+  ([]
+   (phaser->clj
+    (.preUpdate js/Phaser.Component.PhysicsBody))))

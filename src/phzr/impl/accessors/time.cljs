@@ -1,31 +1,31 @@
 (ns phzr.impl.accessors.time)
 
 (def time-get-properties
-  {:pause-duration "pauseDuration"
-   :frames "frames"
-   :events "events"
-   :ms-min "msMin"
-   :physics-elapsed-ms "physicsElapsedMS"
-   :slow-motion "slowMotion"
+  {:advanced-timing "advancedTiming"
    :desired-fps "desiredFps"
-   :advanced-timing "advancedTiming"
+   :events "events"
    :fps "fps"
    :fps-max "fpsMax"
    :fps-min "fpsMin"
-   :suggested-fps "suggestedFps"
-   :physics-elapsed "physicsElapsed"
-   :ms-max "msMax"})
-
-(def time-set-properties
-  {:pause-duration "pauseDuration"
-   :events "events"
+   :frames "frames"
+   :ms-max "msMax"
    :ms-min "msMin"
+   :pause-duration "pauseDuration"
+   :physics-elapsed "physicsElapsed"
    :physics-elapsed-ms "physicsElapsedMS"
    :slow-motion "slowMotion"
+   :suggested-fps "suggestedFps"})
+
+(def time-set-properties
+  {:advanced-timing "advancedTiming"
    :desired-fps "desiredFps"
-   :advanced-timing "advancedTiming"
+   :events "events"
    :fps-max "fpsMax"
    :fps-min "fpsMin"
-   :suggested-fps "suggestedFps"
+   :ms-max "msMax"
+   :ms-min "msMin"
+   :pause-duration "pauseDuration"
    :physics-elapsed "physicsElapsed"
-   :ms-max "msMax"})
+   :physics-elapsed-ms "physicsElapsedMS"
+   :slow-motion "slowMotion"
+   :suggested-fps "suggestedFps"})

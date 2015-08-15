@@ -8,6 +8,17 @@
   ([]
    (js/PIXI.CanvasMaskManager.)))
 
+(defn pop-mask
+  "Restores the current drawing context to the state it was before the mask was applied.
+
+  Parameters:
+    * canvas-mask-manager (PIXI.CanvasMaskManager) - Targeted instance for method
+    * render-session (Object) - The renderSession whose context will be used for this mask manager."
+  ([canvas-mask-manager render-session]
+   (phaser->clj
+    (.popMask canvas-mask-manager
+              (clj->phaser render-session)))))
+
 (defn push-mask
   "This method adds it to the current stack of masks.
 
@@ -20,14 +31,3 @@
     (.pushMask canvas-mask-manager
                (clj->phaser mask-data)
                (clj->phaser render-session)))))
-
-(defn pop-mask
-  "Restores the current drawing context to the state it was before the mask was applied.
-
-  Parameters:
-    * canvas-mask-manager (PIXI.CanvasMaskManager) - Targeted instance for method
-    * render-session (Object) - The renderSession whose context will be used for this mask manager."
-  ([canvas-mask-manager render-session]
-   (phaser->clj
-    (.popMask canvas-mask-manager
-              (clj->phaser render-session)))))

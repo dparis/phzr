@@ -38,23 +38,6 @@
                              (clj->phaser priority)
                              (clj->phaser args))))
 
-(defn execute
-  "Call listener passing arbitrary parameters.
-  If binding was added using `Signal.addOnce()` it will be automatically removed from signal dispatch queue, this method is used internally for the signal dispatch.
-
-  Parameters:
-    * signal-binding (Phaser.SignalBinding) - Targeted instance for method
-    * params-arr (Array.<any>) {optional}  - Array of parameters that should be passed to the listener.
-
-  Returns:  any - Value returned by the listener."
-  ([signal-binding]
-   (phaser->clj
-    (.execute signal-binding)))
-  ([signal-binding params-arr]
-   (phaser->clj
-    (.execute signal-binding
-              (clj->phaser params-arr)))))
-
 (defn detach
   "Detach binding from signal.
   alias to: @see mySignal.remove(myBinding.getListener());
@@ -64,21 +47,22 @@
    (phaser->clj
     (.detach signal-binding))))
 
-(defn is-bound
-  "
+(defn execute
+  "Call listener passing arbitrary parameters.
+  If binding was added using `Signal.addOnce()` it will be automatically removed from signal dispatch queue, this method is used internally for the signal dispatch.
 
-  Returns:  boolean - True if binding is still bound to the signal and has a listener."
+  Parameters:
+    * signal-binding (Phaser.SignalBinding) - Targeted instance for method
+    * params-arr (Array.<any>) {optional} - Array of parameters that should be passed to the listener.
+
+  Returns:  any - Value returned by the listener."
   ([signal-binding]
    (phaser->clj
-    (.isBound signal-binding))))
-
-(defn is-once
-  "
-
-  Returns:  boolean - If SignalBinding will only be executed once."
-  ([signal-binding]
+    (.execute signal-binding)))
+  ([signal-binding params-arr]
    (phaser->clj
-    (.isOnce signal-binding))))
+    (.execute signal-binding
+              (clj->phaser params-arr)))))
 
 (defn get-listener
   "
@@ -95,6 +79,22 @@
   ([signal-binding]
    (phaser->clj
     (.getSignal signal-binding))))
+
+(defn is-bound
+  "
+
+  Returns:  boolean - True if binding is still bound to the signal and has a listener."
+  ([signal-binding]
+   (phaser->clj
+    (.isBound signal-binding))))
+
+(defn is-once
+  "
+
+  Returns:  boolean - If SignalBinding will only be executed once."
+  ([signal-binding]
+   (phaser->clj
+    (.isOnce signal-binding))))
 
 (defn to-string
   "

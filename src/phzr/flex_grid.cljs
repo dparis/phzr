@@ -7,7 +7,7 @@
   "WARNING: This is an EXPERIMENTAL class. The API will change significantly in the coming versions and is incomplete.
   Please try to avoid using in production games with a long time to build.
   This is also why the documentation is incomplete.
-  
+
   FlexGrid is a a responsive grid manager that works in conjunction with the ScaleManager RESIZE scaling mode and FlexLayers
   to provide for game object positioning in a responsive manner.
 
@@ -20,19 +20,6 @@
                         (clj->phaser width)
                         (clj->phaser height))))
 
-(defn set-size
-  "Sets the core game size. This resets the w/h parameters and bounds.
-
-  Parameters:
-    * flex-grid (Phaser.FlexGrid) - Targeted instance for method
-    * width (number) - The new dimensions.
-    * height (number) - The new dimensions."
-  ([flex-grid width height]
-   (phaser->clj
-    (.setSize flex-grid
-              (clj->phaser width)
-              (clj->phaser height)))))
-
 (defn create-custom-layer
   "A custom layer is centered on the game and maintains its aspect ratio as it scales up and down.
 
@@ -40,7 +27,7 @@
     * flex-grid (Phaser.FlexGrid) - Targeted instance for method
     * width (number) - Width of this layer in pixels.
     * height (number) - Height of this layer in pixels.
-    * children (Array.<PIXI.DisplayObject>) {optional}  - An array of children that are used to populate the FlexLayer.
+    * children (Array.<PIXI.DisplayObject>) {optional} - An array of children that are used to populate the FlexLayer.
 
   Returns:  Phaser.FlexLayer - The Layer object."
   ([flex-grid width height]
@@ -55,12 +42,28 @@
                         (clj->phaser height)
                         (clj->phaser children)))))
 
+(defn create-fixed-layer
+  "A fixed layer is centered on the game and is the size of the required dimensions and is never scaled.
+
+  Parameters:
+    * flex-grid (Phaser.FlexGrid) - Targeted instance for method
+    * children (Array.<PIXI.DisplayObject>) {optional} - An array of children that are used to populate the FlexLayer.
+
+  Returns:  Phaser.FlexLayer - The Layer object."
+  ([flex-grid]
+   (phaser->clj
+    (.createFixedLayer flex-grid)))
+  ([flex-grid children]
+   (phaser->clj
+    (.createFixedLayer flex-grid
+                       (clj->phaser children)))))
+
 (defn create-fluid-layer
   "A fluid layer is centered on the game and maintains its aspect ratio as it scales up and down.
 
   Parameters:
     * flex-grid (Phaser.FlexGrid) - Targeted instance for method
-    * children (array) {optional}  - An array of children that are used to populate the FlexLayer.
+    * children (array) {optional} - An array of children that are used to populate the FlexLayer.
 
   Returns:  Phaser.FlexLayer - The Layer object."
   ([flex-grid]
@@ -76,7 +79,7 @@
 
   Parameters:
     * flex-grid (Phaser.FlexGrid) - Targeted instance for method
-    * children (array) {optional}  - An array of children that are used to populate the FlexLayer.
+    * children (array) {optional} - An array of children that are used to populate the FlexLayer.
 
   Returns:  Phaser.FlexLayer - The Layer object."
   ([flex-grid]
@@ -87,27 +90,22 @@
     (.createFullLayer flex-grid
                       (clj->phaser children)))))
 
-(defn create-fixed-layer
-  "A fixed layer is centered on the game and is the size of the required dimensions and is never scaled.
+(defn debug
+  "Call in the render function to output the bounds rects."
+  ([flex-grid]
+   (phaser->clj
+    (.debug flex-grid))))
+
+(defn fit-sprite
+  "Fits a sprites width to the bounds.
 
   Parameters:
     * flex-grid (Phaser.FlexGrid) - Targeted instance for method
-    * children (Array.<PIXI.DisplayObject>) {optional}  - An array of children that are used to populate the FlexLayer.
-
-  Returns:  Phaser.FlexLayer - The Layer object."
-  ([flex-grid]
+    * sprite (Phaser.Sprite) - The Sprite to fit."
+  ([flex-grid sprite]
    (phaser->clj
-    (.createFixedLayer flex-grid)))
-  ([flex-grid children]
-   (phaser->clj
-    (.createFixedLayer flex-grid
-                       (clj->phaser children)))))
-
-(defn reset
-  "Resets the layer children references"
-  ([flex-grid]
-   (phaser->clj
-    (.reset flex-grid))))
+    (.fitSprite flex-grid
+                (clj->phaser sprite)))))
 
 (defn on-resize
   "Called when the game container changes dimensions.
@@ -128,19 +126,21 @@
    (phaser->clj
     (.refresh flex-grid))))
 
-(defn fit-sprite
-  "Fits a sprites width to the bounds.
+(defn reset
+  "Resets the layer children references"
+  ([flex-grid]
+   (phaser->clj
+    (.reset flex-grid))))
+
+(defn set-size
+  "Sets the core game size. This resets the w/h parameters and bounds.
 
   Parameters:
     * flex-grid (Phaser.FlexGrid) - Targeted instance for method
-    * sprite (Phaser.Sprite) - The Sprite to fit."
-  ([flex-grid sprite]
+    * width (number) - The new dimensions.
+    * height (number) - The new dimensions."
+  ([flex-grid width height]
    (phaser->clj
-    (.fitSprite flex-grid
-                (clj->phaser sprite)))))
-
-(defn debug
-  "Call in the render function to output the bounds rects."
-  ([flex-grid]
-   (phaser->clj
-    (.debug flex-grid))))
+    (.setSize flex-grid
+              (clj->phaser width)
+              (clj->phaser height)))))

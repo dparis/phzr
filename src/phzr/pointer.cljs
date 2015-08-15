@@ -14,62 +14,6 @@
    (js/Phaser.Pointer. (clj->phaser game)
                        (clj->phaser id))))
 
-(defn start
-  "Called when the Pointer is pressed onto the touchscreen.
-
-  Parameters:
-    * pointer (Phaser.Pointer) - Targeted instance for method
-    * event (any) - The DOM event from the browser."
-  ([pointer event]
-   (phaser->clj
-    (.start pointer
-            (clj->phaser event)))))
-
-(defn update
-  "Called by the Input Manager."
-  ([pointer]
-   (phaser->clj
-    (.update pointer))))
-
-(defn move
-  "Called when the Pointer is moved.
-
-  Parameters:
-    * pointer (Phaser.Pointer) - Targeted instance for method
-    * event (MouseEvent | PointerEvent | TouchEvent) - The event passed up from the input handler.
-    * from-click (boolean) {optional}  - Was this called from the click event?"
-  ([pointer event]
-   (phaser->clj
-    (.move pointer
-           (clj->phaser event))))
-  ([pointer event from-click]
-   (phaser->clj
-    (.move pointer
-           (clj->phaser event)
-           (clj->phaser from-click)))))
-
-(defn leave
-  "Called when the Pointer leaves the target area.
-
-  Parameters:
-    * pointer (Phaser.Pointer) - Targeted instance for method
-    * event (MouseEvent | PointerEvent | TouchEvent) - The event passed up from the input handler."
-  ([pointer event]
-   (phaser->clj
-    (.leave pointer
-            (clj->phaser event)))))
-
-(defn stop
-  "Called when the Pointer leaves the touchscreen.
-
-  Parameters:
-    * pointer (Phaser.Pointer) - Targeted instance for method
-    * event (MouseEvent | PointerEvent | TouchEvent) - The event passed up from the input handler."
-  ([pointer event]
-   (phaser->clj
-    (.stop pointer
-           (clj->phaser event)))))
-
 (defn just-pressed
   "The Pointer is considered justPressed if the time it was pressed onto the touchscreen or clicked is less than justPressedRate.
   Note that calling justPressed doesn't reset the pressed status of the Pointer, it will return `true` for as long as the duration is valid.
@@ -77,7 +21,7 @@
 
   Parameters:
     * pointer (Phaser.Pointer) - Targeted instance for method
-    * duration (number) {optional}  - The time to check against. If none given it will use InputManager.justPressedRate.
+    * duration (number) {optional} - The time to check against. If none given it will use InputManager.justPressedRate.
 
   Returns:  boolean - true if the Pointer was pressed down within the duration given."
   ([pointer]
@@ -95,7 +39,7 @@
 
   Parameters:
     * pointer (Phaser.Pointer) - Targeted instance for method
-    * duration (number) {optional}  - The time to check against. If none given it will use InputManager.justReleasedRate.
+    * duration (number) {optional} - The time to check against. If none given it will use InputManager.justReleasedRate.
 
   Returns:  boolean - true if the Pointer was released within the duration given."
   ([pointer]
@@ -105,6 +49,34 @@
    (phaser->clj
     (.justReleased pointer
                    (clj->phaser duration)))))
+
+(defn leave
+  "Called when the Pointer leaves the target area.
+
+  Parameters:
+    * pointer (Phaser.Pointer) - Targeted instance for method
+    * event (MouseEvent | PointerEvent | TouchEvent) - The event passed up from the input handler."
+  ([pointer event]
+   (phaser->clj
+    (.leave pointer
+            (clj->phaser event)))))
+
+(defn move
+  "Called when the Pointer is moved.
+
+  Parameters:
+    * pointer (Phaser.Pointer) - Targeted instance for method
+    * event (MouseEvent | PointerEvent | TouchEvent) - The event passed up from the input handler.
+    * from-click (boolean) {optional} - Was this called from the click event?"
+  ([pointer event]
+   (phaser->clj
+    (.move pointer
+           (clj->phaser event))))
+  ([pointer event from-click]
+   (phaser->clj
+    (.move pointer
+           (clj->phaser event)
+           (clj->phaser from-click)))))
 
 (defn reset
   "Resets the Pointer properties. Called by InputManager.reset when you perform a State change."
@@ -117,3 +89,31 @@
   ([pointer]
    (phaser->clj
     (.resetMovement pointer))))
+
+(defn start
+  "Called when the Pointer is pressed onto the touchscreen.
+
+  Parameters:
+    * pointer (Phaser.Pointer) - Targeted instance for method
+    * event (any) - The DOM event from the browser."
+  ([pointer event]
+   (phaser->clj
+    (.start pointer
+            (clj->phaser event)))))
+
+(defn stop
+  "Called when the Pointer leaves the touchscreen.
+
+  Parameters:
+    * pointer (Phaser.Pointer) - Targeted instance for method
+    * event (MouseEvent | PointerEvent | TouchEvent) - The event passed up from the input handler."
+  ([pointer event]
+   (phaser->clj
+    (.stop pointer
+           (clj->phaser event)))))
+
+(defn update
+  "Called by the Input Manager."
+  ([pointer]
+   (phaser->clj
+    (.update pointer))))

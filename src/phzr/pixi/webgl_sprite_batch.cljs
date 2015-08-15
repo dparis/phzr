@@ -9,26 +9,21 @@
   ([]
    (js/PIXI.WebGLSpriteBatch.)))
 
-(defn compile-vertex-shader-
+(defn begin
   "
 
   Parameters:
     * webgl-sprite-batch (PIXI.WebGLSpriteBatch) - Targeted instance for method
-    * gl (WebGLContext) - the current WebGL drawing context
-    * shader-src (Array) - -
-
-  Returns:   - "
-  ([gl shader-src]
+    * render-session (Object) - The RenderSession object"
+  ([webgl-sprite-batch render-session]
    (phaser->clj
-    (.CompileVertexShader js/PIXI.WebGLSpriteBatch
-                          (clj->phaser gl)
-                          (clj->phaser shader-src)))))
+    (.begin webgl-sprite-batch
+            (clj->phaser render-session)))))
 
 (defn compile-fragment-shader-
   "
 
   Parameters:
-    * webgl-sprite-batch (PIXI.WebGLSpriteBatch) - Targeted instance for method
     * gl (WebGLContext) - the current WebGL drawing context
     * shader-src (Array) - -
 
@@ -43,7 +38,6 @@
   "
 
   Parameters:
-    * webgl-sprite-batch (PIXI.WebGLSpriteBatch) - Targeted instance for method
     * gl (WebGLContext) - the current WebGL drawing context
     * vertex-src (Array) - -
     * fragment-src (Array) - -
@@ -56,27 +50,25 @@
                      (clj->phaser vertex-src)
                      (clj->phaser fragment-src)))))
 
-(defn set-context
+(defn compile-vertex-shader-
   "
 
   Parameters:
-    * webgl-sprite-batch (PIXI.WebGLSpriteBatch) - Targeted instance for method
-    * gl (WebGLContext) - the current WebGL drawing context"
-  ([webgl-sprite-batch gl]
-   (phaser->clj
-    (.setContext webgl-sprite-batch
-                 (clj->phaser gl)))))
+    * gl (WebGLContext) - the current WebGL drawing context
+    * shader-src (Array) - -
 
-(defn begin
-  "
-
-  Parameters:
-    * webgl-sprite-batch (PIXI.WebGLSpriteBatch) - Targeted instance for method
-    * render-session (Object) - The RenderSession object"
-  ([webgl-sprite-batch render-session]
+  Returns:   - "
+  ([gl shader-src]
    (phaser->clj
-    (.begin webgl-sprite-batch
-            (clj->phaser render-session)))))
+    (.CompileVertexShader js/PIXI.WebGLSpriteBatch
+                          (clj->phaser gl)
+                          (clj->phaser shader-src)))))
+
+(defn destroy
+  "Destroys the SpriteBatch."
+  ([webgl-sprite-batch]
+   (phaser->clj
+    (.destroy webgl-sprite-batch))))
 
 (defn end
   ""
@@ -84,13 +76,19 @@
    (phaser->clj
     (.end webgl-sprite-batch))))
 
+(defn flush
+  "Renders the content and empties the current batch."
+  ([webgl-sprite-batch]
+   (phaser->clj
+    (.flush webgl-sprite-batch))))
+
 (defn render
   "
 
   Parameters:
     * webgl-sprite-batch (PIXI.WebGLSpriteBatch) - Targeted instance for method
     * sprite (PIXI.Sprite) - the sprite to render when using this spritebatch
-    * matrix (Matrix) {optional}  - - Optional matrix. If provided the Display Object will be rendered using this matrix, otherwise it will use its worldTransform."
+    * matrix (Matrix) {optional} - - Optional matrix. If provided the Display Object will be rendered using this matrix, otherwise it will use its worldTransform."
   ([webgl-sprite-batch sprite]
    (phaser->clj
     (.render webgl-sprite-batch
@@ -100,23 +98,6 @@
     (.render webgl-sprite-batch
              (clj->phaser sprite)
              (clj->phaser matrix)))))
-
-(defn render-tiling-sprite
-  "Renders a TilingSprite using the spriteBatch.
-
-  Parameters:
-    * webgl-sprite-batch (PIXI.WebGLSpriteBatch) - Targeted instance for method
-    * sprite (PIXI.TilingSprite) - the sprite to render"
-  ([webgl-sprite-batch sprite]
-   (phaser->clj
-    (.renderTilingSprite webgl-sprite-batch
-                         (clj->phaser sprite)))))
-
-(defn flush
-  "Renders the content and empties the current batch."
-  ([webgl-sprite-batch]
-   (phaser->clj
-    (.flush webgl-sprite-batch))))
 
 (defn render-batch
   "
@@ -133,11 +114,27 @@
                   (clj->phaser size)
                   (clj->phaser start-index)))))
 
-(defn stop
-  ""
-  ([webgl-sprite-batch]
+(defn render-tiling-sprite
+  "Renders a TilingSprite using the spriteBatch.
+
+  Parameters:
+    * webgl-sprite-batch (PIXI.WebGLSpriteBatch) - Targeted instance for method
+    * sprite (PIXI.TilingSprite) - the sprite to render"
+  ([webgl-sprite-batch sprite]
    (phaser->clj
-    (.stop webgl-sprite-batch))))
+    (.renderTilingSprite webgl-sprite-batch
+                         (clj->phaser sprite)))))
+
+(defn set-context
+  "
+
+  Parameters:
+    * webgl-sprite-batch (PIXI.WebGLSpriteBatch) - Targeted instance for method
+    * gl (WebGLContext) - the current WebGL drawing context"
+  ([webgl-sprite-batch gl]
+   (phaser->clj
+    (.setContext webgl-sprite-batch
+                 (clj->phaser gl)))))
 
 (defn start
   ""
@@ -145,8 +142,8 @@
    (phaser->clj
     (.start webgl-sprite-batch))))
 
-(defn destroy
-  "Destroys the SpriteBatch."
+(defn stop
+  ""
   ([webgl-sprite-batch]
    (phaser->clj
-    (.destroy webgl-sprite-batch))))
+    (.stop webgl-sprite-batch))))

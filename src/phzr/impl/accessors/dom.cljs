@@ -1,9 +1,9 @@
 (ns phzr.impl.accessors.dom)
 
 (def dom-get-properties
-  {:visual-bounds "visualBounds"
+  {:document-bounds "documentBounds"
    :layout-bounds "layoutBounds"
-   :document-bounds "documentBounds"})
+   :visual-bounds "visualBounds"})
 
 (def dom-set-properties
   {})

@@ -23,6 +23,12 @@
    (phaser->clj
     (.clear filter-texture))))
 
+(defn destroy
+  "Destroys the filter texture."
+  ([filter-texture]
+   (phaser->clj
+    (.destroy filter-texture))))
+
 (defn resize
   "Resizes the texture to the specified width and height
 
@@ -35,9 +41,3 @@
     (.resize filter-texture
              (clj->phaser width)
              (clj->phaser height)))))
-
-(defn destroy
-  "Destroys the filter texture."
-  ([filter-texture]
-   (phaser->clj
-    (.destroy filter-texture))))

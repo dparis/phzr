@@ -1,15 +1,15 @@
 (ns phzr.impl.accessors.pixi.pixi-fast-shader)
 
 (def pixi-fast-shader-get-properties
-  {:gl "gl"
+  {:fragment-src "fragmentSrc"
+   :gl "gl"
    :program "program"
-   :fragment-src "fragmentSrc"
-   :vertex-src "vertexSrc"
-   :texture-count "textureCount"})
+   :texture-count "textureCount"
+   :vertex-src "vertexSrc"})
 
 (def pixi-fast-shader-set-properties
-  {:gl "gl"
+  {:fragment-src "fragmentSrc"
+   :gl "gl"
    :program "program"
-   :fragment-src "fragmentSrc"
-   :vertex-src "vertexSrc"
-   :texture-count "textureCount"})
+   :texture-count "textureCount"
+   :vertex-src "vertexSrc"})

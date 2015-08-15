@@ -5,10 +5,10 @@
 
 (defn ->TimerEvent
   "A TimerEvent is a single event that is processed by a Phaser.Timer.
-  
+
   It consists of a delay, which is a value in milliseconds after which the event will fire.
   When the event fires it calls a specific callback with the specified arguments.
-  
+
   Use {@link Phaser.Timer#add}, {@link Phaser.Timer#add}, or {@link Phaser.Timer#add} methods to create a new event.
 
   Parameters:

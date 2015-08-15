@@ -1,36 +1,36 @@
 (ns phzr.impl.accessors.physics.arcade)
 
 (def ^:private arcade-constants
-  {:sort-none "SORT_NONE"
+  {:bottom-top "BOTTOM_TOP"
    :left-right "LEFT_RIGHT"
    :right-left "RIGHT_LEFT"
-   :top-bottom "TOP_BOTTOM"
-   :bottom-top "BOTTOM_TOP"})
+   :sort-none "SORT_NONE"
+   :top-bottom "TOP_BOTTOM"})
 
 (def arcade-get-properties
-  {:sort-direction "sortDirection"
-   :game "game"
-   :is-paused "isPaused"
-   :skip-quad-tree "skipQuadTree"
-   :bounds "bounds"
-   :gravity "gravity"
-   :force-x "forceX"
-   :max-objects "maxObjects"
-   :max-levels "maxLevels"
-   :quad-tree "quadTree"
+  {:bounds "bounds"
    :check-collision "checkCollision"
-   :overlap-bias "OVERLAP_BIAS"})
+   :force-x "forceX"
+   :game "game"
+   :gravity "gravity"
+   :is-paused "isPaused"
+   :max-levels "maxLevels"
+   :max-objects "maxObjects"
+   :overlap-bias "OVERLAP_BIAS"
+   :quad-tree "quadTree"
+   :skip-quad-tree "skipQuadTree"
+   :sort-direction "sortDirection"})
 
 (def arcade-set-properties
-  {:sort-direction "sortDirection"
-   :game "game"
-   :is-paused "isPaused"
-   :skip-quad-tree "skipQuadTree"
-   :bounds "bounds"
-   :gravity "gravity"
-   :force-x "forceX"
-   :max-objects "maxObjects"
-   :max-levels "maxLevels"
-   :quad-tree "quadTree"
+  {:bounds "bounds"
    :check-collision "checkCollision"
-   :overlap-bias "OVERLAP_BIAS"})
+   :force-x "forceX"
+   :game "game"
+   :gravity "gravity"
+   :is-paused "isPaused"
+   :max-levels "maxLevels"
+   :max-objects "maxObjects"
+   :overlap-bias "OVERLAP_BIAS"
+   :quad-tree "quadTree"
+   :skip-quad-tree "skipQuadTree"
+   :sort-direction "sortDirection"})

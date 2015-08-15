@@ -1,25 +1,25 @@
 (ns phzr.impl.accessors.circle)
 
 (def circle-get-properties
-  {:y "y"
+  {:area "area"
    :bottom "bottom"
-   :top "top"
    :diameter "diameter"
-   :type "type"
-   :radius "radius"
    :empty "empty"
+   :left "left"
+   :radius "radius"
    :right "right"
-   :area "area"
+   :top "top"
+   :type "type"
    :x "x"
-   :left "left"})
+   :y "y"})
 
 (def circle-set-properties
-  {:y "y"
-   :bottom "bottom"
-   :top "top"
+  {:bottom "bottom"
    :diameter "diameter"
-   :radius "radius"
    :empty "empty"
+   :left "left"
+   :radius "radius"
    :right "right"
+   :top "top"
    :x "x"
-   :left "left"})
+   :y "y"})

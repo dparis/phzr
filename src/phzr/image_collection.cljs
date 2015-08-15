@@ -5,7 +5,7 @@
 
 (defn ->ImageCollection
   "An Image Collection is a special tileset containing mulitple images, with no slicing into each image.
-  
+
   Image Collections are normally created automatically when Tiled data is loaded.
 
   Parameters:
@@ -50,19 +50,6 @@
                                (clj->phaser spacing)
                                (clj->phaser properties))))
 
-(defn contains-image-index
-  "Returns true if and only if this image collection contains the given image index.
-
-  Parameters:
-    * image-collection (Phaser.ImageCollection) - Targeted instance for method
-    * image-index (integer) - The image index to search for.
-
-  Returns:  boolean - True if this Image Collection contains the given index."
-  ([image-collection image-index]
-   (phaser->clj
-    (.containsImageIndex image-collection
-                         (clj->phaser image-index)))))
-
 (defn add-image
   "Add an image to this Image Collection.
 
@@ -75,3 +62,16 @@
     (.addImage image-collection
                (clj->phaser gid)
                (clj->phaser image)))))
+
+(defn contains-image-index
+  "Returns true if and only if this image collection contains the given image index.
+
+  Parameters:
+    * image-collection (Phaser.ImageCollection) - Targeted instance for method
+    * image-index (integer) - The image index to search for.
+
+  Returns:  boolean - True if this Image Collection contains the given index."
+  ([image-collection image-index]
+   (phaser->clj
+    (.containsImageIndex image-collection
+                         (clj->phaser image-index)))))

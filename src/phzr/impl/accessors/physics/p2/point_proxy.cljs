@@ -1,13 +1,13 @@
 (ns phzr.impl.accessors.physics.p2.point-proxy)
 
 (def point-proxy-get-properties
-  {:x "x"
-   :y "y"
-   :mx "mx"
-   :my "my"})
+  {:mx "mx"
+   :my "my"
+   :x "x"
+   :y "y"})
 
 (def point-proxy-set-properties
-  {:x "x"
-   :y "y"
-   :mx "mx"
-   :my "my"})
+  {:mx "mx"
+   :my "my"
+   :x "x"
+   :y "y"})

@@ -1,15 +1,15 @@
 (ns phzr.impl.accessors.array-set)
 
 (def array-set-get-properties
-  {:position "position"
+  {:first "first"
    :list "list"
-   :total "total"
-   :first "first"
-   :next "next"})
+   :next "next"
+   :position "position"
+   :total "total"})
 
 (def array-set-set-properties
-  {:position "position"
+  {:first "first"
    :list "list"
-   :total "total"
-   :first "first"
-   :next "next"})
+   :next "next"
+   :position "position"
+   :total "total"})

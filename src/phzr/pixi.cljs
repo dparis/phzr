@@ -3,28 +3,6 @@
             [phzr.impl.extend :as ex]
             [cljsjs.phaser]))
 
-(defn hex-2rgb
-  "Converts a hex color number to an [R, G, B] array
-
-  Parameters:
-    * pixi (PIXI) - Targeted instance for method
-    * hex (Number) - -"
-  ([pixi hex]
-   (phaser->clj
-    (.hex2rgb pixi
-              (clj->phaser hex)))))
-
-(defn rgb-2hex
-  "Converts a color as an [R, G, B] array to a hex number
-
-  Parameters:
-    * pixi (PIXI) - Targeted instance for method
-    * rgb (Array) - -"
-  ([pixi rgb]
-   (phaser->clj
-    (.rgb2hex pixi
-              (clj->phaser rgb)))))
-
 (defn can-use-new-canvas-blend-modes
   "Checks whether the Canvas BlendModes are supported by the current browser for drawImage
 
@@ -47,6 +25,17 @@
     (.getNextPowerOfTwo pixi
                         (clj->phaser number)))))
 
+(defn hex-2rgb
+  "Converts a hex color number to an [R, G, B] array
+
+  Parameters:
+    * pixi (PIXI) - Targeted instance for method
+    * hex (Number) - -"
+  ([pixi hex]
+   (phaser->clj
+    (.hex2rgb pixi
+              (clj->phaser hex)))))
+
 (defn is-power-of-two
   "checks if the given width and height make a power of two texture
 
@@ -61,3 +50,14 @@
     (.isPowerOfTwo pixi
                    (clj->phaser width)
                    (clj->phaser height)))))
+
+(defn rgb-2hex
+  "Converts a color as an [R, G, B] array to a hex number
+
+  Parameters:
+    * pixi (PIXI) - Targeted instance for method
+    * rgb (Array) - -"
+  ([pixi rgb]
+   (phaser->clj
+    (.rgb2hex pixi
+              (clj->phaser rgb)))))

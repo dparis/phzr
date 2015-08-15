@@ -17,11 +17,61 @@
   ([list]
    (js/Phaser.Physics.P2.FixtureList. (clj->phaser list))))
 
+(defn flatten
+  "A helper to flatten arrays. This is very useful as the fixtures are nested from time to time due to the way P2 creates and splits polygons.
+
+  Parameters:
+    * fixture-list (Phaser.Physics.P2.FixtureList) - Targeted instance for method
+    * array (array) - The array to flatten. Notice: This will happen recursive not shallow."
+  ([fixture-list array]
+   (phaser->clj
+    (.flatten fixture-list
+              (clj->phaser array)))))
+
+(defn get-fixture-by-key
+  "Accessor to get either a single fixture by its key.
+
+  Parameters:
+    * fixture-list (Phaser.Physics.P2.FixtureList) - Targeted instance for method
+    * key (string) - The key of the fixture."
+  ([fixture-list key]
+   (phaser->clj
+    (.getFixtureByKey fixture-list
+                      (clj->phaser key)))))
+
+(defn get-fixtures
+  "Accessor to get either a list of specified fixtures by key or the whole fixture list
+
+  Parameters:
+    * fixture-list (Phaser.Physics.P2.FixtureList) - Targeted instance for method
+    * keys (array) - A list of fixture keys"
+  ([fixture-list keys]
+   (phaser->clj
+    (.getFixtures fixture-list
+                  (clj->phaser keys)))))
+
+(defn get-group
+  "Accessor to get a group of fixtures by its group index.
+
+  Parameters:
+    * fixture-list (Phaser.Physics.P2.FixtureList) - Targeted instance for method
+    * group-id (number) - The group index."
+  ([fixture-list group-id]
+   (phaser->clj
+    (.getGroup fixture-list
+               (clj->phaser group-id)))))
+
 (defn init
   ""
   ([fixture-list]
    (phaser->clj
     (.init fixture-list))))
+
+(defn parse
+  "Parser for the output of Phaser.Physics.P2.Body#addPhaserPolygon"
+  ([fixture-list]
+   (phaser->clj
+    (.parse fixture-list))))
 
 (defn set-category
   "
@@ -49,19 +99,6 @@
               (clj->phaser bit)
               (clj->phaser fixture-key)))))
 
-(defn set-sensor
-  "
-
-  Parameters:
-    * fixture-list (Phaser.Physics.P2.FixtureList) - Targeted instance for method
-    * value (boolean) - sensor true or false
-    * fixture-key (string) - Only apply to the fixture with the given key"
-  ([fixture-list value fixture-key]
-   (phaser->clj
-    (.setSensor fixture-list
-                (clj->phaser value)
-                (clj->phaser fixture-key)))))
-
 (defn set-material
   "
 
@@ -75,52 +112,15 @@
                   (clj->phaser material)
                   (clj->phaser fixture-key)))))
 
-(defn get-fixtures
-  "Accessor to get either a list of specified fixtures by key or the whole fixture list
+(defn set-sensor
+  "
 
   Parameters:
     * fixture-list (Phaser.Physics.P2.FixtureList) - Targeted instance for method
-    * keys (array) - A list of fixture keys"
-  ([fixture-list keys]
+    * value (boolean) - sensor true or false
+    * fixture-key (string) - Only apply to the fixture with the given key"
+  ([fixture-list value fixture-key]
    (phaser->clj
-    (.getFixtures fixture-list
-                  (clj->phaser keys)))))
-
-(defn get-fixture-by-key
-  "Accessor to get either a single fixture by its key.
-
-  Parameters:
-    * fixture-list (Phaser.Physics.P2.FixtureList) - Targeted instance for method
-    * key (string) - The key of the fixture."
-  ([fixture-list key]
-   (phaser->clj
-    (.getFixtureByKey fixture-list
-                      (clj->phaser key)))))
-
-(defn get-group
-  "Accessor to get a group of fixtures by its group index.
-
-  Parameters:
-    * fixture-list (Phaser.Physics.P2.FixtureList) - Targeted instance for method
-    * group-id (number) - The group index."
-  ([fixture-list group-id]
-   (phaser->clj
-    (.getGroup fixture-list
-               (clj->phaser group-id)))))
-
-(defn parse
-  "Parser for the output of Phaser.Physics.P2.Body#addPhaserPolygon"
-  ([fixture-list]
-   (phaser->clj
-    (.parse fixture-list))))
-
-(defn flatten
-  "A helper to flatten arrays. This is very useful as the fixtures are nested from time to time due to the way P2 creates and splits polygons.
-
-  Parameters:
-    * fixture-list (Phaser.Physics.P2.FixtureList) - Targeted instance for method
-    * array (array) - The array to flatten. Notice: This will happen recursive not shallow."
-  ([fixture-list array]
-   (phaser->clj
-    (.flatten fixture-list
-              (clj->phaser array)))))
+    (.setSensor fixture-list
+                (clj->phaser value)
+                (clj->phaser fixture-key)))))

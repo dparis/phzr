@@ -16,19 +16,6 @@
     (.In cubic
          (clj->phaser k)))))
 
-(defn out
-  "Cubic ease-out.
-
-  Parameters:
-    * cubic (Phaser.Easing.Cubic) - Targeted instance for method
-    * k (number) - The value to be tweened.
-
-  Returns:  number - The tweened value."
-  ([cubic k]
-   (phaser->clj
-    (.Out cubic
-          (clj->phaser k)))))
-
 (defn in-out
   "Cubic ease-in/out.
 
@@ -41,3 +28,16 @@
    (phaser->clj
     (.InOut cubic
             (clj->phaser k)))))
+
+(defn out
+  "Cubic ease-out.
+
+  Parameters:
+    * cubic (Phaser.Easing.Cubic) - Targeted instance for method
+    * k (number) - The value to be tweened.
+
+  Returns:  number - The tweened value."
+  ([cubic k]
+   (phaser->clj
+    (.Out cubic
+          (clj->phaser k)))))

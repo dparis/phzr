@@ -2,28 +2,28 @@
 
 (def ^:private physics-constants
   {:arcade "ARCADE"
-   :p2-js "P2JS"
-   :ninja "NINJA"
    :box-2d "BOX2D"
    :chipmunk "CHIPMUNK"
-   :matterjs "MATTERJS"})
+   :matterjs "MATTERJS"
+   :ninja "NINJA"
+   :p2-js "P2JS"})
 
 (def physics-get-properties
-  {:game "game"
-   :config "config"
-   :arcade "arcade"
-   :p2 "p2"
-   :ninja "ninja"
+  {:arcade "arcade"
    :box-2d "box2d"
    :chipmunk "chipmunk"
-   :matter "matter"})
+   :config "config"
+   :game "game"
+   :matter "matter"
+   :ninja "ninja"
+   :p2 "p2"})
 
 (def physics-set-properties
-  {:game "game"
-   :config "config"
-   :arcade "arcade"
-   :p2 "p2"
-   :ninja "ninja"
+  {:arcade "arcade"
    :box-2d "box2d"
    :chipmunk "chipmunk"
-   :matter "matter"})
+   :config "config"
+   :game "game"
+   :matter "matter"
+   :ninja "ninja"
+   :p2 "p2"})

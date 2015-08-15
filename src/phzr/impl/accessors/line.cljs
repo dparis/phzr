@@ -1,25 +1,25 @@
 (ns phzr.impl.accessors.line)
 
 (def line-get-properties
-  {:y "y"
-   :normal-x "normalX"
+  {:angle "angle"
    :bottom "bottom"
-   :top "top"
-   :normal-angle "normalAngle"
-   :width "width"
-   :start "start"
-   :type "type"
-   :angle "angle"
-   :slope "slope"
-   :length "length"
-   :right "right"
-   :x "x"
-   :normal-y "normalY"
    :end "end"
-   :perp-slope "perpSlope"
    :height "height"
-   :left "left"})
+   :left "left"
+   :length "length"
+   :normal-angle "normalAngle"
+   :normal-x "normalX"
+   :normal-y "normalY"
+   :perp-slope "perpSlope"
+   :right "right"
+   :slope "slope"
+   :start "start"
+   :top "top"
+   :type "type"
+   :width "width"
+   :x "x"
+   :y "y"})
 
 (def line-set-properties
-  {:start "start"
-   :end "end"})
+  {:end "end"
+   :start "start"})

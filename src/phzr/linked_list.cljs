@@ -6,7 +6,7 @@
 
 (defn ->LinkedList
   "A basic Linked List data structure.
-  
+
   This implementation _modifies_ the `prev` and `next` properties of each item added:
   - The `prev` and `next` properties must be writable and should not be used for any other purpose.
   - Items _cannot_ be added to multiple LinkedLists at the same time.
@@ -27,11 +27,17 @@
     (.add linked-list
           (clj->phaser item)))))
 
-(defn reset
-  "Resets the first, last, next and previous node pointers in this list."
-  ([linked-list]
+(defn call-all
+  "Calls a function on all members of this list, using the member as the context for the callback.
+  The function must exist on the member.
+
+  Parameters:
+    * linked-list (Phaser.LinkedList) - Targeted instance for method
+    * callback (function) - The function to call."
+  ([linked-list callback]
    (phaser->clj
-    (.reset linked-list))))
+    (.callAll linked-list
+              (clj->phaser callback)))))
 
 (defn remove
   "Removes the given element from this linked list if it exists.
@@ -44,14 +50,8 @@
     (.remove linked-list
              (clj->phaser item)))))
 
-(defn call-all
-  "Calls a function on all members of this list, using the member as the context for the callback.
-  The function must exist on the member.
-
-  Parameters:
-    * linked-list (Phaser.LinkedList) - Targeted instance for method
-    * callback (function) - The function to call."
-  ([linked-list callback]
+(defn reset
+  "Resets the first, last, next and previous node pointers in this list."
+  ([linked-list]
    (phaser->clj
-    (.callAll linked-list
-              (clj->phaser callback)))))
+    (.reset linked-list))))

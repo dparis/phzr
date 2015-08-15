@@ -8,16 +8,11 @@
   ([]
    (js/PIXI.WebGLShaderManager.)))
 
-(defn set-context
-  "Initialises the context and the properties.
-
-  Parameters:
-    * webgl-shader-manager (PIXI.WebGLShaderManager) - Targeted instance for method
-    * gl (WebGLContext) - the current WebGL drawing context"
-  ([webgl-shader-manager gl]
+(defn destroy
+  "Destroys this object."
+  ([webgl-shader-manager]
    (phaser->clj
-    (.setContext webgl-shader-manager
-                 (clj->phaser gl)))))
+    (.destroy webgl-shader-manager))))
 
 (defn set-attribs
   "Takes the attributes given in parameters.
@@ -30,6 +25,17 @@
     (.setAttribs webgl-shader-manager
                  (clj->phaser attribs)))))
 
+(defn set-context
+  "Initialises the context and the properties.
+
+  Parameters:
+    * webgl-shader-manager (PIXI.WebGLShaderManager) - Targeted instance for method
+    * gl (WebGLContext) - the current WebGL drawing context"
+  ([webgl-shader-manager gl]
+   (phaser->clj
+    (.setContext webgl-shader-manager
+                 (clj->phaser gl)))))
+
 (defn set-shader
   "Sets the current shader.
 
@@ -40,9 +46,3 @@
    (phaser->clj
     (.setShader webgl-shader-manager
                 (clj->phaser shader)))))
-
-(defn destroy
-  "Destroys this object."
-  ([webgl-shader-manager]
-   (phaser->clj
-    (.destroy webgl-shader-manager))))

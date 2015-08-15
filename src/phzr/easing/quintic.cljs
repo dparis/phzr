@@ -16,19 +16,6 @@
     (.In quintic
          (clj->phaser k)))))
 
-(defn out
-  "Quintic ease-out.
-
-  Parameters:
-    * quintic (Phaser.Easing.Quintic) - Targeted instance for method
-    * k (number) - The value to be tweened.
-
-  Returns:  number - The tweened value."
-  ([quintic k]
-   (phaser->clj
-    (.Out quintic
-          (clj->phaser k)))))
-
 (defn in-out
   "Quintic ease-in/out.
 
@@ -41,3 +28,16 @@
    (phaser->clj
     (.InOut quintic
             (clj->phaser k)))))
+
+(defn out
+  "Quintic ease-out.
+
+  Parameters:
+    * quintic (Phaser.Easing.Quintic) - Targeted instance for method
+    * k (number) - The value to be tweened.
+
+  Returns:  number - The tweened value."
+  ([quintic k]
+   (phaser->clj
+    (.Out quintic
+          (clj->phaser k)))))

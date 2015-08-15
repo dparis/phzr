@@ -13,19 +13,6 @@
    (js/PIXI.Rope. (clj->phaser texture)
                   (clj->phaser points))))
 
-(defn get-bounds
-  "Returns the bounds of the mesh as a rectangle. The bounds calculation takes the worldTransform into account.
-
-  Parameters:
-    * rope (PIXI.Rope) - Targeted instance for method
-    * matrix (Matrix) - the transformation matrix of the sprite
-
-  Returns:  Rectangle - the framing rectangle"
-  ([rope matrix]
-   (phaser->clj
-    (.getBounds rope
-                (clj->phaser matrix)))))
-
 (defn add-child
   "Adds a child to the container.
 
@@ -54,18 +41,56 @@
                  (clj->phaser child)
                  (clj->phaser index)))))
 
-(defn swap-children
-  "Swaps the position of 2 Display Objects within this container.
+(defn destroy
+  "Destroy this DisplayObject.
+  Removes all references to transformCallbacks, its parent, the stage, filters, bounds, mask and cached Sprites."
+  ([rope]
+   (phaser->clj
+    (.destroy rope))))
+
+(defn generate-texture
+  "Useful function that returns a texture of the displayObject object that can then be used to create sprites
+  This can be quite useful if your displayObject is static / complicated and needs to be reused multiple times.
 
   Parameters:
     * rope (PIXI.Rope) - Targeted instance for method
-    * child (PIXI.DisplayObject) - -
-    * child-2 (PIXI.DisplayObject) - -"
-  ([rope child child-2]
+    * resolution (Number) - The resolution of the texture being generated
+    * scale-mode (Number) - See PIXI.scaleModes for possible values
+    * renderer (PIXI.CanvasRenderer | PIXI.WebGLRenderer) - The renderer used to generate the texture.
+
+  Returns:  PIXI.Texture - a texture of the graphics object"
+  ([rope resolution scale-mode renderer]
    (phaser->clj
-    (.swapChildren rope
-                   (clj->phaser child)
-                   (clj->phaser child-2)))))
+    (.generateTexture rope
+                      (clj->phaser resolution)
+                      (clj->phaser scale-mode)
+                      (clj->phaser renderer)))))
+
+(defn get-bounds
+  "Returns the bounds of the mesh as a rectangle. The bounds calculation takes the worldTransform into account.
+
+  Parameters:
+    * rope (PIXI.Rope) - Targeted instance for method
+    * matrix (Matrix) - the transformation matrix of the sprite
+
+  Returns:  Rectangle - the framing rectangle"
+  ([rope matrix]
+   (phaser->clj
+    (.getBounds rope
+                (clj->phaser matrix)))))
+
+(defn get-child-at
+  "Returns the child at the specified index
+
+  Parameters:
+    * rope (PIXI.Rope) - Targeted instance for method
+    * index (Number) - The index to get the child from
+
+  Returns:  PIXI.DisplayObject - The child at the given index, if any."
+  ([rope index]
+   (phaser->clj
+    (.getChildAt rope
+                 (clj->phaser index)))))
 
 (defn get-child-index
   "Returns the index position of a child DisplayObject instance
@@ -80,31 +105,19 @@
     (.getChildIndex rope
                     (clj->phaser child)))))
 
-(defn set-child-index
-  "Changes the position of an existing child in the display object container
+(defn get-local-bounds
+  "Retrieves the non-global local bounds of the displayObjectContainer as a rectangle. The calculation takes all visible children into consideration.
 
-  Parameters:
-    * rope (PIXI.Rope) - Targeted instance for method
-    * child (PIXI.DisplayObject) - The child DisplayObject instance for which you want to change the index number
-    * index (Number) - The resulting index number for the child display object"
-  ([rope child index]
+  Returns:  Rectangle - The rectangular bounding area"
+  ([rope]
    (phaser->clj
-    (.setChildIndex rope
-                    (clj->phaser child)
-                    (clj->phaser index)))))
+    (.getLocalBounds rope))))
 
-(defn get-child-at
-  "Returns the child at the specified index
-
-  Parameters:
-    * rope (PIXI.Rope) - Targeted instance for method
-    * index (Number) - The index to get the child from
-
-  Returns:  PIXI.DisplayObject - The child at the given index, if any."
-  ([rope index]
+(defn pre-update
+  "Empty, to be overridden by classes that require it."
+  ([rope]
    (phaser->clj
-    (.getChildAt rope
-                 (clj->phaser index)))))
+    (.preUpdate rope))))
 
 (defn remove-child
   "Removes a child from the container.
@@ -145,13 +158,24 @@
                      (clj->phaser begin-index)
                      (clj->phaser end-index)))))
 
-(defn get-local-bounds
-  "Retrieves the non-global local bounds of the displayObjectContainer as a rectangle. The calculation takes all visible children into consideration.
-
-  Returns:  Rectangle - The rectangular bounding area"
+(defn remove-stage-reference
+  "Removes the current stage reference from the container and all of its children."
   ([rope]
    (phaser->clj
-    (.getLocalBounds rope))))
+    (.removeStageReference rope))))
+
+(defn set-child-index
+  "Changes the position of an existing child in the display object container
+
+  Parameters:
+    * rope (PIXI.Rope) - Targeted instance for method
+    * child (PIXI.DisplayObject) - The child DisplayObject instance for which you want to change the index number
+    * index (Number) - The resulting index number for the child display object"
+  ([rope child index]
+   (phaser->clj
+    (.setChildIndex rope
+                    (clj->phaser child)
+                    (clj->phaser index)))))
 
 (defn set-stage-reference
   "Sets the containers Stage reference. This is the Stage that this object, and all of its children, is connected to.
@@ -164,48 +188,18 @@
     (.setStageReference rope
                         (clj->phaser stage)))))
 
-(defn remove-stage-reference
-  "Removes the current stage reference from the container and all of its children."
-  ([rope]
-   (phaser->clj
-    (.removeStageReference rope))))
-
-(defn destroy
-  "Destroy this DisplayObject.
-  Removes all references to transformCallbacks, its parent, the stage, filters, bounds, mask and cached Sprites."
-  ([rope]
-   (phaser->clj
-    (.destroy rope))))
-
-(defn pre-update
-  "Empty, to be overridden by classes that require it."
-  ([rope]
-   (phaser->clj
-    (.preUpdate rope))))
-
-(defn generate-texture
-  "Useful function that returns a texture of the displayObject object that can then be used to create sprites
-  This can be quite useful if your displayObject is static / complicated and needs to be reused multiple times.
+(defn swap-children
+  "Swaps the position of 2 Display Objects within this container.
 
   Parameters:
     * rope (PIXI.Rope) - Targeted instance for method
-    * resolution (Number) - The resolution of the texture being generated
-    * scale-mode (Number) - See PIXI.scaleModes for possible values
-    * renderer (PIXI.CanvasRenderer | PIXI.WebGLRenderer) - The renderer used to generate the texture.
-
-  Returns:  PIXI.Texture - a texture of the graphics object"
-  ([rope resolution scale-mode renderer]
+    * child (PIXI.DisplayObject) - -
+    * child-2 (PIXI.DisplayObject) - -"
+  ([rope child child-2]
    (phaser->clj
-    (.generateTexture rope
-                      (clj->phaser resolution)
-                      (clj->phaser scale-mode)
-                      (clj->phaser renderer)))))
-
-(defn update-cache
-  "Generates and updates the cached sprite for this object."
-  ([rope]
-   (phaser->clj
-    (.updateCache rope))))
+    (.swapChildren rope
+                   (clj->phaser child)
+                   (clj->phaser child-2)))))
 
 (defn to-global
   "Calculates the global position of the display object
@@ -226,7 +220,7 @@
   Parameters:
     * rope (PIXI.Rope) - Targeted instance for method
     * position (Point) - The world origin to calculate from
-    * from (PIXI.DisplayObject) {optional}  - The DisplayObject to calculate the global position from
+    * from (PIXI.DisplayObject) {optional} - The DisplayObject to calculate the global position from
 
   Returns:  Point - A point object representing the position of this object"
   ([rope position]
@@ -238,3 +232,9 @@
     (.toLocal rope
               (clj->phaser position)
               (clj->phaser from)))))
+
+(defn update-cache
+  "Generates and updates the cached sprite for this object."
+  ([rope]
+   (phaser->clj
+    (.updateCache rope))))

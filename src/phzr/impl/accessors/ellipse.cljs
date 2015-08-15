@@ -1,24 +1,24 @@
 (ns phzr.impl.accessors.ellipse)
 
 (def ellipse-get-properties
-  {:y "y"
-   :bottom "bottom"
-   :top "top"
-   :width "width"
-   :type "type"
+  {:bottom "bottom"
    :empty "empty"
-   :right "right"
-   :x "x"
    :height "height"
-   :left "left"})
+   :left "left"
+   :right "right"
+   :top "top"
+   :type "type"
+   :width "width"
+   :x "x"
+   :y "y"})
 
 (def ellipse-set-properties
-  {:y "y"
-   :bottom "bottom"
+  {:bottom "bottom"
+   :empty "empty"
+   :height "height"
+   :left "left"
+   :right "right"
    :top "top"
    :width "width"
-   :empty "empty"
-   :right "right"
    :x "x"
-   :height "height"
-   :left "left"})
+   :y "y"})

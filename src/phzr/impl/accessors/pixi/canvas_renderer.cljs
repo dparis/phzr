@@ -1,31 +1,31 @@
 (ns phzr.impl.accessors.pixi.canvas-renderer)
 
 (def canvas-renderer-get-properties
-  {:transparent "transparent"
-   :refresh "refresh"
-   :clear-before-render "clearBeforeRender"
-   :width "width"
-   :type "type"
-   :auto-resize "autoResize"
+  {:auto-resize "autoResize"
    :canvas-mask-manager "CanvasMaskManager"
-   :resolution "resolution"
-   :count "count"
-   :render-session "renderSession"
+   :clear-before-render "clearBeforeRender"
    :context "context"
+   :count "count"
+   :height "height"
+   :refresh "refresh"
+   :render-session "renderSession"
+   :resolution "resolution"
+   :transparent "transparent"
+   :type "type"
    :view "view"
-   :height "height"})
+   :width "width"})
 
 (def canvas-renderer-set-properties
-  {:transparent "transparent"
-   :refresh "refresh"
-   :clear-before-render "clearBeforeRender"
-   :width "width"
-   :type "type"
-   :auto-resize "autoResize"
+  {:auto-resize "autoResize"
    :canvas-mask-manager "CanvasMaskManager"
-   :resolution "resolution"
-   :count "count"
-   :render-session "renderSession"
+   :clear-before-render "clearBeforeRender"
    :context "context"
+   :count "count"
+   :height "height"
+   :refresh "refresh"
+   :render-session "renderSession"
+   :resolution "resolution"
+   :transparent "transparent"
+   :type "type"
    :view "view"
-   :height "height"})
+   :width "width"})

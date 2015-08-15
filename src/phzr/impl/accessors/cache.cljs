@@ -2,27 +2,27 @@
 
 (def ^:private cache-constants
   {:binary "BINARY"
-   :sound "SOUND"
-   :video "VIDEO"
-   :render-texture "RENDER_TEXTURE"
    :bitmapdata "BITMAPDATA"
-   :canvas "CANVAS"
-   :physics "PHYSICS"
-   :tilemap "TILEMAP"
    :bitmapfont "BITMAPFONT"
+   :canvas "CANVAS"
    :image "IMAGE"
    :json "JSON"
-   :xml "XML"
-   :texture "TEXTURE"
+   :physics "PHYSICS"
+   :render-texture "RENDER_TEXTURE"
    :shader "SHADER"
-   :text "TEXT"})
+   :sound "SOUND"
+   :text "TEXT"
+   :texture "TEXTURE"
+   :tilemap "TILEMAP"
+   :video "VIDEO"
+   :xml "XML"})
 
 (def cache-get-properties
-  {:game "game"
-   :auto-resolve-url "autoResolveURL"
+  {:auto-resolve-url "autoResolveURL"
+   :game "game"
    :on-sound-unlock "onSoundUnlock"})
 
 (def cache-set-properties
-  {:game "game"
-   :auto-resolve-url "autoResolveURL"
+  {:auto-resolve-url "autoResolveURL"
+   :game "game"
    :on-sound-unlock "onSoundUnlock"})

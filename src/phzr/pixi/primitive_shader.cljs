@@ -11,14 +11,14 @@
   ([gl]
    (js/PIXI.PrimitiveShader. (clj->phaser gl))))
 
-(defn init
-  "Initialises the shader."
-  ([primitive-shader]
-   (phaser->clj
-    (.init primitive-shader))))
-
 (defn destroy
   "Destroys the shader."
   ([primitive-shader]
    (phaser->clj
     (.destroy primitive-shader))))
+
+(defn init
+  "Initialises the shader."
+  ([primitive-shader]
+   (phaser->clj
+    (.init primitive-shader))))

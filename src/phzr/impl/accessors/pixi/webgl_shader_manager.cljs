@@ -1,13 +1,13 @@
 (ns phzr.impl.accessors.pixi.webgl-shader-manager)
 
 (def webgl-shader-manager-get-properties
-  {:max-attibs "maxAttibs"
-   :attrib-state "attribState"
-   :temp-attrib-state "tempAttribState"
-   :stack "stack"})
+  {:attrib-state "attribState"
+   :max-attibs "maxAttibs"
+   :stack "stack"
+   :temp-attrib-state "tempAttribState"})
 
 (def webgl-shader-manager-set-properties
-  {:max-attibs "maxAttibs"
-   :attrib-state "attribState"
-   :temp-attrib-state "tempAttribState"
-   :stack "stack"})
+  {:attrib-state "attribState"
+   :max-attibs "maxAttibs"
+   :stack "stack"
+   :temp-attrib-state "tempAttribState"})

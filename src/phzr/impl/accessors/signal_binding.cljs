@@ -1,13 +1,13 @@
 (ns phzr.impl.accessors.signal-binding)
 
 (def signal-binding-get-properties
-  {:context "context"
+  {:active "active"
    :call-count "callCount"
-   :active "active"
+   :context "context"
    :params "params"})
 
 (def signal-binding-set-properties
-  {:context "context"
+  {:active "active"
    :call-count "callCount"
-   :active "active"
+   :context "context"
    :params "params"})

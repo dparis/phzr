@@ -16,19 +16,6 @@
     (.In quadratic
          (clj->phaser k)))))
 
-(defn out
-  "Ease-out.
-
-  Parameters:
-    * quadratic (Phaser.Easing.Quadratic) - Targeted instance for method
-    * k (number) - The value to be tweened.
-
-  Returns:  number - k* (2-k)."
-  ([quadratic k]
-   (phaser->clj
-    (.Out quadratic
-          (clj->phaser k)))))
-
 (defn in-out
   "Ease-in/out.
 
@@ -41,3 +28,16 @@
    (phaser->clj
     (.InOut quadratic
             (clj->phaser k)))))
+
+(defn out
+  "Ease-out.
+
+  Parameters:
+    * quadratic (Phaser.Easing.Quadratic) - Targeted instance for method
+    * k (number) - The value to be tweened.
+
+  Returns:  number - k* (2-k)."
+  ([quadratic k]
+   (phaser->clj
+    (.Out quadratic
+          (clj->phaser k)))))

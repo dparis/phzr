@@ -1,17 +1,17 @@
 (ns phzr.impl.accessors.audio-sprite)
 
 (def audio-sprite-get-properties
-  {:game "game"
-   :key "key"
-   :config "config"
+  {:autoplay "autoplay"
    :autoplay-key "autoplayKey"
-   :autoplay "autoplay"
+   :config "config"
+   :game "game"
+   :key "key"
    :sounds "sounds"})
 
 (def audio-sprite-set-properties
-  {:game "game"
-   :key "key"
-   :config "config"
+  {:autoplay "autoplay"
    :autoplay-key "autoplayKey"
-   :autoplay "autoplay"
+   :config "config"
+   :game "game"
+   :key "key"
    :sounds "sounds"})

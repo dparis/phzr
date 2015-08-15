@@ -16,19 +16,6 @@
     (.In circular
          (clj->phaser k)))))
 
-(defn out
-  "Circular ease-out.
-
-  Parameters:
-    * circular (Phaser.Easing.Circular) - Targeted instance for method
-    * k (number) - The value to be tweened.
-
-  Returns:  number - The tweened value."
-  ([circular k]
-   (phaser->clj
-    (.Out circular
-          (clj->phaser k)))))
-
 (defn in-out
   "Circular ease-in/out.
 
@@ -41,3 +28,16 @@
    (phaser->clj
     (.InOut circular
             (clj->phaser k)))))
+
+(defn out
+  "Circular ease-out.
+
+  Parameters:
+    * circular (Phaser.Easing.Circular) - Targeted instance for method
+    * k (number) - The value to be tweened.
+
+  Returns:  number - The tweened value."
+  ([circular k]
+   (phaser->clj
+    (.Out circular
+          (clj->phaser k)))))

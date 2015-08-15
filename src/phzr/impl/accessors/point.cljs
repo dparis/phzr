@@ -1,9 +1,9 @@
 (ns phzr.impl.accessors.point)
 
 (def point-get-properties
-  {:x "x"
-   :y "y"
-   :type "type"})
+  {:type "type"
+   :x "x"
+   :y "y"})
 
 (def point-set-properties
   {:x "x"

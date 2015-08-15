@@ -16,19 +16,6 @@
     (.In elastic
          (clj->phaser k)))))
 
-(defn out
-  "Elastic ease-out.
-
-  Parameters:
-    * elastic (Phaser.Easing.Elastic) - Targeted instance for method
-    * k (number) - The value to be tweened.
-
-  Returns:  number - The tweened value."
-  ([elastic k]
-   (phaser->clj
-    (.Out elastic
-          (clj->phaser k)))))
-
 (defn in-out
   "Elastic ease-in/out.
 
@@ -41,3 +28,16 @@
    (phaser->clj
     (.InOut elastic
             (clj->phaser k)))))
+
+(defn out
+  "Elastic ease-out.
+
+  Parameters:
+    * elastic (Phaser.Easing.Elastic) - Targeted instance for method
+    * k (number) - The value to be tweened.
+
+  Returns:  number - The tweened value."
+  ([elastic k]
+   (phaser->clj
+    (.Out elastic
+          (clj->phaser k)))))

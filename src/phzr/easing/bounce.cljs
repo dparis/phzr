@@ -16,19 +16,6 @@
     (.In bounce
          (clj->phaser k)))))
 
-(defn out
-  "Bounce ease-out.
-
-  Parameters:
-    * bounce (Phaser.Easing.Bounce) - Targeted instance for method
-    * k (number) - The value to be tweened.
-
-  Returns:  number - The tweened value."
-  ([bounce k]
-   (phaser->clj
-    (.Out bounce
-          (clj->phaser k)))))
-
 (defn in-out
   "Bounce ease-in/out.
 
@@ -41,3 +28,16 @@
    (phaser->clj
     (.InOut bounce
             (clj->phaser k)))))
+
+(defn out
+  "Bounce ease-out.
+
+  Parameters:
+    * bounce (Phaser.Easing.Bounce) - Targeted instance for method
+    * k (number) - The value to be tweened.
+
+  Returns:  number - The tweened value."
+  ([bounce k]
+   (phaser->clj
+    (.Out bounce
+          (clj->phaser k)))))

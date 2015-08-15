@@ -2,22 +2,22 @@
 
 (def filter-get-properties
   {:dirty "dirty"
-   :game "game"
-   :uniforms "uniforms"
-   :width "width"
    :fragment-src "fragmentSrc"
-   :type "type"
-   :prev-point "prevPoint"
+   :game "game"
+   :height "height"
    :padding "padding"
-   :height "height"})
+   :prev-point "prevPoint"
+   :type "type"
+   :uniforms "uniforms"
+   :width "width"})
 
 (def filter-set-properties
   {:dirty "dirty"
-   :game "game"
-   :uniforms "uniforms"
-   :width "width"
    :fragment-src "fragmentSrc"
-   :type "type"
-   :prev-point "prevPoint"
+   :game "game"
+   :height "height"
    :padding "padding"
-   :height "height"})
+   :prev-point "prevPoint"
+   :type "type"
+   :uniforms "uniforms"
+   :width "width"})

@@ -11,14 +11,14 @@
   ([gl]
    (js/PIXI.StripShader. (clj->phaser gl))))
 
-(defn init
-  "Initialises the shader."
-  ([strip-shader]
-   (phaser->clj
-    (.init strip-shader))))
-
 (defn destroy
   "Destroys the shader."
   ([strip-shader]
    (phaser->clj
     (.destroy strip-shader))))
+
+(defn init
+  "Initialises the shader."
+  ([strip-shader]
+   (phaser->clj
+    (.init strip-shader))))

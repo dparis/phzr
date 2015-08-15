@@ -11,14 +11,14 @@
   ([gl]
    (js/PIXI.PixiFastShader. (clj->phaser gl))))
 
-(defn init
-  "Initialises the shader."
-  ([pixi-fast-shader]
-   (phaser->clj
-    (.init pixi-fast-shader))))
-
 (defn destroy
   "Destroys the shader."
   ([pixi-fast-shader]
    (phaser->clj
     (.destroy pixi-fast-shader))))
+
+(defn init
+  "Initialises the shader."
+  ([pixi-fast-shader]
+   (phaser->clj
+    (.init pixi-fast-shader))))

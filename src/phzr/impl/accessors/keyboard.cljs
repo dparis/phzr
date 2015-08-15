@@ -1,23 +1,23 @@
 (ns phzr.impl.accessors.keyboard)
 
 (def keyboard-get-properties
-  {:game "game"
-   :on-press-callback "onPressCallback"
-   :on-down-callback "onDownCallback"
-   :last-char "lastChar"
-   :event "event"
-   :callback-context "callbackContext"
-   :last-key "lastKey"
-   :press-event "pressEvent"
+  {:callback-context "callbackContext"
    :enabled "enabled"
-   :on-up-callback "onUpCallback"})
+   :event "event"
+   :game "game"
+   :last-char "lastChar"
+   :last-key "lastKey"
+   :on-down-callback "onDownCallback"
+   :on-press-callback "onPressCallback"
+   :on-up-callback "onUpCallback"
+   :press-event "pressEvent"})
 
 (def keyboard-set-properties
-  {:game "game"
+  {:callback-context "callbackContext"
    :enabled "enabled"
    :event "event"
-   :press-event "pressEvent"
-   :callback-context "callbackContext"
+   :game "game"
    :on-down-callback "onDownCallback"
    :on-press-callback "onPressCallback"
-   :on-up-callback "onUpCallback"})
+   :on-up-callback "onUpCallback"
+   :press-event "pressEvent"})

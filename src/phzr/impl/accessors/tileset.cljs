@@ -1,19 +1,19 @@
 (ns phzr.impl.accessors.tileset)
 
 (def tileset-get-properties
-  {:properties "properties"
+  {:columns "columns"
    :firstgid "firstgid"
-   :columns "columns"
-   :name "name"
-   :tile-width "tileWidth"
-   :rows "rows"
-   :total "total"
    :image "image"
-   :tile-spacing "tileSpacing"
+   :name "name"
+   :properties "properties"
+   :rows "rows"
+   :tile-height "tileHeight"
    :tile-margin "tileMargin"
-   :tile-height "tileHeight"})
+   :tile-spacing "tileSpacing"
+   :tile-width "tileWidth"
+   :total "total"})
 
 (def tileset-set-properties
-  {:name "name"
-   :firstgid "firstgid"
+  {:firstgid "firstgid"
+   :name "name"
    :properties "properties"})

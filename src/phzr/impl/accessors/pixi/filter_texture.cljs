@@ -1,13 +1,13 @@
 (ns phzr.impl.accessors.pixi.filter-texture)
 
 (def filter-texture-get-properties
-  {:gl "gl"
-   :frame-buffer "frameBuffer"
-   :texture "texture"
-   :scale-mode "scaleMode"})
+  {:frame-buffer "frameBuffer"
+   :gl "gl"
+   :scale-mode "scaleMode"
+   :texture "texture"})
 
 (def filter-texture-set-properties
-  {:gl "gl"
-   :frame-buffer "frameBuffer"
-   :texture "texture"
-   :scale-mode "scaleMode"})
+  {:frame-buffer "frameBuffer"
+   :gl "gl"
+   :scale-mode "scaleMode"
+   :texture "texture"})

@@ -8,29 +8,11 @@
   ([]
    (js/PIXI.WebGLMaskManager.)))
 
-(defn set-context
-  "Sets the drawing context to the one given in parameter.
-
-  Parameters:
-    * webgl-mask-manager (PIXI.WebGLMaskManager) - Targeted instance for method
-    * gl (WebGLContext) - the current WebGL drawing context"
-  ([webgl-mask-manager gl]
+(defn destroy
+  "Destroys the mask stack."
+  ([webgl-mask-manager]
    (phaser->clj
-    (.setContext webgl-mask-manager
-                 (clj->phaser gl)))))
-
-(defn push-mask
-  "Applies the Mask and adds it to the current filter stack.
-
-  Parameters:
-    * webgl-mask-manager (PIXI.WebGLMaskManager) - Targeted instance for method
-    * mask-data (Array) - -
-    * render-session (Object) - -"
-  ([webgl-mask-manager mask-data render-session]
-   (phaser->clj
-    (.pushMask webgl-mask-manager
-               (clj->phaser mask-data)
-               (clj->phaser render-session)))))
+    (.destroy webgl-mask-manager))))
 
 (defn pop-mask
   "Removes the last filter from the filter stack and doesn't return it.
@@ -45,8 +27,26 @@
               (clj->phaser mask-data)
               (clj->phaser render-session)))))
 
-(defn destroy
-  "Destroys the mask stack."
-  ([webgl-mask-manager]
+(defn push-mask
+  "Applies the Mask and adds it to the current filter stack.
+
+  Parameters:
+    * webgl-mask-manager (PIXI.WebGLMaskManager) - Targeted instance for method
+    * mask-data (Array) - -
+    * render-session (Object) - -"
+  ([webgl-mask-manager mask-data render-session]
    (phaser->clj
-    (.destroy webgl-mask-manager))))
+    (.pushMask webgl-mask-manager
+               (clj->phaser mask-data)
+               (clj->phaser render-session)))))
+
+(defn set-context
+  "Sets the drawing context to the one given in parameter.
+
+  Parameters:
+    * webgl-mask-manager (PIXI.WebGLMaskManager) - Targeted instance for method
+    * gl (WebGLContext) - the current WebGL drawing context"
+  ([webgl-mask-manager gl]
+   (phaser->clj
+    (.setContext webgl-mask-manager
+                 (clj->phaser gl)))))

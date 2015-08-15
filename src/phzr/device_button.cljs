@@ -5,16 +5,16 @@
 
 (defn ->DeviceButton
   "DeviceButtons belong to both `Phaser.Pointer` and `Phaser.SinglePad` (Gamepad) instances.
-  
+
   For Pointers they represent the various buttons that can exist on mice and pens, such as the left button, right button,
   middle button and advanced buttons like back and forward.
-  
+
   Access them via `Pointer.leftbutton`, `Pointer.rightButton` and so on.
-  
+
   On Gamepads they represent all buttons on the pad: from shoulder buttons to action buttons.
-  
+
   At the time of writing this there are device limitations you should be aware of:
-  
+
   - On Windows, if you install a mouse driver, and its utility software allows you to customize button actions 
     (e.g., IntelliPoint and SetPoint), the middle (wheel) button, the 4th button, and the 5th button might not be set, 
     even when they are pressed.
@@ -28,13 +28,20 @@
    (js/Phaser.DeviceButton. (clj->phaser parent)
                             (clj->phaser button-code))))
 
+(defn destroy
+  "Destroys this DeviceButton, this disposes of the onDown, onUp and onFloat signals 
+  and clears the parent and game references."
+  ([device-button]
+   (phaser->clj
+    (.destroy device-button))))
+
 (defn just-pressed
   "Returns the 'just pressed' state of this button.
   Just pressed is considered true if the button was pressed down within the duration given (default 250ms).
 
   Parameters:
     * device-button (Phaser.DeviceButton) - Targeted instance for method
-    * duration (number) {optional}  - The duration in ms below which the button is considered as being just pressed.
+    * duration (number) {optional} - The duration in ms below which the button is considered as being just pressed.
 
   Returns:  boolean - True if the button is just pressed otherwise false."
   ([device-button]
@@ -51,7 +58,7 @@
 
   Parameters:
     * device-button (Phaser.DeviceButton) - Targeted instance for method
-    * duration (number) {optional}  - The duration in ms below which the button is considered as being just released.
+    * duration (number) {optional} - The duration in ms below which the button is considered as being just released.
 
   Returns:  boolean - True if the button is just released otherwise false."
   ([device-button]
@@ -67,10 +74,3 @@
   ([device-button]
    (phaser->clj
     (.reset device-button))))
-
-(defn destroy
-  "Destroys this DeviceButton, this disposes of the onDown, onUp and onFloat signals 
-  and clears the parent and game references."
-  ([device-button]
-   (phaser->clj
-    (.destroy device-button))))

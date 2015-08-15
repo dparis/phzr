@@ -1,24 +1,24 @@
 (ns phzr.impl.accessors.timer)
 
 (def ^:private timer-constants
-  {:minute "MINUTE"
-   :second "SECOND"
-   :half "HALF"
-   :quarter "QUARTER"})
+  {:half "HALF"
+   :minute "MINUTE"
+   :quarter "QUARTER"
+   :second "SECOND"})
 
 (def timer-get-properties
-  {:paused "paused"
-   :events "events"
-   :time-cap "timeCap"
+  {:auto-destroy "autoDestroy"
    :duration "duration"
-   :seconds "seconds"
-   :running "running"
-   :next "next"
-   :auto-destroy "autoDestroy"
-   :length "length"
+   :events "events"
    :expired "expired"
+   :length "length"
    :ms "ms"
-   :on-complete "onComplete"})
+   :next "next"
+   :on-complete "onComplete"
+   :paused "paused"
+   :running "running"
+   :seconds "seconds"
+   :time-cap "timeCap"})
 
 (def timer-set-properties
   {:auto-destroy "autoDestroy"

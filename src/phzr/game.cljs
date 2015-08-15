@@ -6,7 +6,7 @@
 (defn ->Game
   "This is where the magic happens. The Game object is the heart of your game,
   providing quick access to common functions and handling the boot process.
-  
+
   'Hell, there are no rules here - we're trying to accomplish something.'
                                                         Thomas A. Edison
 
@@ -66,12 +66,11 @@
                     (clj->phaser antialias)
                     (clj->phaser physics-config))))
 
-(defn enable-step
-  "Enable core game loop stepping. When enabled you must call game.step() directly (perhaps via a DOM button?)
-  Calling step will advance the game loop by one frame. This is extremely useful for hard to track down errors!"
+(defn destroy
+  "Nukes the entire game from orbit."
   ([game]
    (phaser->clj
-    (.enableStep game))))
+    (.destroy game))))
 
 (defn disable-step
   "Disables core game loop stepping."
@@ -79,15 +78,16 @@
    (phaser->clj
     (.disableStep game))))
 
+(defn enable-step
+  "Enable core game loop stepping. When enabled you must call game.step() directly (perhaps via a DOM button?)
+  Calling step will advance the game loop by one frame. This is extremely useful for hard to track down errors!"
+  ([game]
+   (phaser->clj
+    (.enableStep game))))
+
 (defn step
   "When stepping is enabled you must call this function directly (perhaps via a DOM button?) to advance the game loop by one frame.
   This is extremely useful to hard to track down errors! Use the internal stepCount property to monitor progress."
   ([game]
    (phaser->clj
     (.step game))))
-
-(defn destroy
-  "Nukes the entire game from orbit."
-  ([game]
-   (phaser->clj
-    (.destroy game))))

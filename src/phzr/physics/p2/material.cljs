@@ -5,7 +5,7 @@
 
 (defn ->Material
   "A P2 Material.
-  
+
   \\o/ ~ 'Because I'm a Material girl'
 
   Parameters:

@@ -1,13 +1,13 @@
 (ns phzr.impl.accessors.component.health)
 
 (def health-get-properties
-  {:health "health"
-   :max-health "maxHealth"
-   :damage "damage"
-   :heal "heal"})
+  {:damage "damage"
+   :heal "heal"
+   :health "health"
+   :max-health "maxHealth"})
 
 (def health-set-properties
-  {:health "health"
-   :max-health "maxHealth"
-   :damage "damage"
-   :heal "heal"})
+  {:damage "damage"
+   :heal "heal"
+   :health "health"
+   :max-health "maxHealth"})

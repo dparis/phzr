@@ -23,6 +23,20 @@
                             (clj->phaser height)
                             (clj->phaser options))))
 
+(defn destroy
+  "Removes everything from the renderer and optionally removes the Canvas DOM element.
+
+  Parameters:
+    * canvas-renderer (PIXI.CanvasRenderer) - Targeted instance for method
+    * remove-view (Boolean) {optional} - Removes the Canvas element from the DOM."
+  ([canvas-renderer]
+   (phaser->clj
+    (.destroy canvas-renderer)))
+  ([canvas-renderer remove-view]
+   (phaser->clj
+    (.destroy canvas-renderer
+              (clj->phaser remove-view)))))
+
 (defn render
   "Renders the Stage to this canvas view
 
@@ -33,20 +47,6 @@
    (phaser->clj
     (.render canvas-renderer
              (clj->phaser stage)))))
-
-(defn destroy
-  "Removes everything from the renderer and optionally removes the Canvas DOM element.
-
-  Parameters:
-    * canvas-renderer (PIXI.CanvasRenderer) - Targeted instance for method
-    * remove-view (Boolean) {optional}  - Removes the Canvas element from the DOM."
-  ([canvas-renderer]
-   (phaser->clj
-    (.destroy canvas-renderer)))
-  ([canvas-renderer remove-view]
-   (phaser->clj
-    (.destroy canvas-renderer
-              (clj->phaser remove-view)))))
 
 (defn resize
   "Resizes the canvas view to the specified width and height

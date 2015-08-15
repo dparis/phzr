@@ -1,12 +1,12 @@
 (ns phzr.impl.accessors.component.bounds)
 
 (def bounds-get-properties
-  {:offset-x "offsetX"
-   :offset-y "offsetY"
+  {:bottom "bottom"
    :left "left"
+   :offset-x "offsetX"
+   :offset-y "offsetY"
    :right "right"
-   :top "top"
-   :bottom "bottom"})
+   :top "top"})
 
 (def bounds-set-properties
   {})

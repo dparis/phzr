@@ -1,20 +1,20 @@
 (ns phzr.impl.accessors.pixi.base-texture)
 
 (def base-texture-get-properties
-  {:image-url "imageUrl"
-   :has-loaded "hasLoaded"
-   :scale-mode "scaleMode"
-   :width "width"
+  {:has-loaded "hasLoaded"
+   :height "height"
+   :image-url "imageUrl"
    :mipmap "mipmap"
    :premultiplied-alpha "premultipliedAlpha"
-   :source "source"
    :resolution "resolution"
-   :height "height"})
+   :scale-mode "scaleMode"
+   :source "source"
+   :width "width"})
 
 (def base-texture-set-properties
-  {:resolution "resolution"
-   :scale-mode "scaleMode"
-   :source "source"
-   :premultiplied-alpha "premultipliedAlpha"
+  {:image-url "imageUrl"
    :mipmap "mipmap"
-   :image-url "imageUrl"})
+   :premultiplied-alpha "premultipliedAlpha"
+   :resolution "resolution"
+   :scale-mode "scaleMode"
+   :source "source"})

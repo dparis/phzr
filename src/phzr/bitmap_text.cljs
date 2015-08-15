@@ -8,25 +8,25 @@
   "BitmapText objects work by taking a texture file and an XML or JSON file that describes the font structure.
   It then generates a new Sprite object for each letter of the text, proportionally spaced out and aligned to 
   match the font structure.
-  
+
   BitmapText objects are less flexible than Text objects, in that they have less features such as shadows, fills and the ability 
   to use Web Fonts, however you trade this flexibility for rendering speed. You can also create visually compelling BitmapTexts by
   processing the font texture in an image editor, applying fills and any other effects required.
-  
+
   To create multi-line text insert \\r, \\n or \\r\\n escape codes into the text string.
-  
+
   If you are having performance issues due to the volume of sprites being rendered, and do not require the text to be constantly
   updating, you can use BitmapText.generateTexture to create a static texture from this BitmapText.
-  
+
   To create a BitmapText data files you can use:
-  
+
   BMFont (Windows, free): http://www.angelcode.com/products/bmfont/
   Glyph Designer (OS X, commercial): http://www.71squared.com/en/glyphdesigner
   Littera (Web-based, free): http://kvazars.com/littera/
-  
+
   For most use cases it is recommended to use XML. If you wish to use JSON, the formatting should be equal to the result of
   converting a valid XML file through the popular X2JS library. An online tool for conversion can be found here: http://codebeautify.org/xmltojson
-  
+
   If you were using an older version of Phaser (< 2.4) and using the DOMish parser hack, please remove this. It isn't required any longer.
 
   Parameters:
@@ -64,48 +64,6 @@
                           (clj->phaser size)
                           (clj->phaser align))))
 
-(defn pre-update
-  "Automatically called by World.preUpdate.
-
-  Returns:  boolean - True if the BitmapText was rendered, otherwise false."
-  ([bitmap-text]
-   (phaser->clj
-    (.preUpdate bitmap-text))))
-
-(defn post-update
-  "Automatically called by World.preUpdate."
-  ([bitmap-text]
-   (phaser->clj
-    (.postUpdate bitmap-text))))
-
-(defn set-text
-  "The text to be displayed by this BitmapText object.
-  
-  It's faster to use `BitmapText.text = string`, but this is kept for backwards compatibility.
-
-  Parameters:
-    * bitmap-text (Phaser.BitmapText) - Targeted instance for method
-    * text (string) - The text to be displayed by this BitmapText object."
-  ([bitmap-text text]
-   (phaser->clj
-    (.setText bitmap-text
-              (clj->phaser text)))))
-
-(defn purge-glyphs
-  "If a BitmapText changes from having a large number of characters to having very few characters it will cause lots of
-  Sprites to be retained in the BitmapText._glyphs array. Although they are not attached to the display list they
-  still take up memory while sat in the glyphs pool waiting to be re-used in the future.
-  
-  If you know that the BitmapText will not grow any larger then you can purge out the excess glyphs from the pool 
-  by calling this method.
-  
-  Calling this doesn't prevent you from increasing the length of the text again in the future.
-
-  Returns:  integer - The amount of glyphs removed from the pool."
-  ([bitmap-text]
-   (phaser->clj
-    (.purgeGlyphs bitmap-text))))
-
 (defn add-child
   "Adds a child to the container.
 
@@ -134,18 +92,51 @@
                  (clj->phaser child)
                  (clj->phaser index)))))
 
-(defn swap-children
-  "Swaps the position of 2 Display Objects within this container.
+(defn destroy
+  "Destroy this DisplayObject.
+  Removes all references to transformCallbacks, its parent, the stage, filters, bounds, mask and cached Sprites."
+  ([bitmap-text]
+   (phaser->clj
+    (.destroy bitmap-text))))
+
+(defn generate-texture
+  "Useful function that returns a texture of the displayObject object that can then be used to create sprites
+  This can be quite useful if your displayObject is static / complicated and needs to be reused multiple times.
 
   Parameters:
     * bitmap-text (Phaser.BitmapText) - Targeted instance for method
-    * child (PIXI.DisplayObject) - -
-    * child-2 (PIXI.DisplayObject) - -"
-  ([bitmap-text child child-2]
+    * resolution (Number) - The resolution of the texture being generated
+    * scale-mode (Number) - See PIXI.scaleModes for possible values
+    * renderer (PIXI.CanvasRenderer | PIXI.WebGLRenderer) - The renderer used to generate the texture.
+
+  Returns:  PIXI.Texture - a texture of the graphics object"
+  ([bitmap-text resolution scale-mode renderer]
    (phaser->clj
-    (.swapChildren bitmap-text
-                   (clj->phaser child)
-                   (clj->phaser child-2)))))
+    (.generateTexture bitmap-text
+                      (clj->phaser resolution)
+                      (clj->phaser scale-mode)
+                      (clj->phaser renderer)))))
+
+(defn get-bounds
+  "Retrieves the bounds of the displayObjectContainer as a rectangle. The bounds calculation takes all visible children into consideration.
+
+  Returns:  Rectangle - The rectangular bounding area"
+  ([bitmap-text]
+   (phaser->clj
+    (.getBounds bitmap-text))))
+
+(defn get-child-at
+  "Returns the child at the specified index
+
+  Parameters:
+    * bitmap-text (Phaser.BitmapText) - Targeted instance for method
+    * index (Number) - The index to get the child from
+
+  Returns:  PIXI.DisplayObject - The child at the given index, if any."
+  ([bitmap-text index]
+   (phaser->clj
+    (.getChildAt bitmap-text
+                 (clj->phaser index)))))
 
 (defn get-child-index
   "Returns the index position of a child DisplayObject instance
@@ -160,31 +151,57 @@
     (.getChildIndex bitmap-text
                     (clj->phaser child)))))
 
-(defn set-child-index
-  "Changes the position of an existing child in the display object container
+(defn get-local-bounds
+  "Retrieves the non-global local bounds of the displayObjectContainer as a rectangle. The calculation takes all visible children into consideration.
 
-  Parameters:
-    * bitmap-text (Phaser.BitmapText) - Targeted instance for method
-    * child (PIXI.DisplayObject) - The child DisplayObject instance for which you want to change the index number
-    * index (Number) - The resulting index number for the child display object"
-  ([bitmap-text child index]
+  Returns:  Rectangle - The rectangular bounding area"
+  ([bitmap-text]
    (phaser->clj
-    (.setChildIndex bitmap-text
-                    (clj->phaser child)
-                    (clj->phaser index)))))
+    (.getLocalBounds bitmap-text))))
 
-(defn get-child-at
-  "Returns the child at the specified index
+(defn kill
+  "Kills a Game Object. A killed Game Object has its `alive`, `exists` and `visible` properties all set to false.
 
-  Parameters:
-    * bitmap-text (Phaser.BitmapText) - Targeted instance for method
-    * index (Number) - The index to get the child from
+  It will dispatch the `onKilled` event. You can listen to `events.onKilled` for the signal.
 
-  Returns:  PIXI.DisplayObject - The child at the given index, if any."
-  ([bitmap-text index]
+  Note that killing a Game Object is a way for you to quickly recycle it in an object pool, 
+  it doesn't destroy the object or free it up from memory.
+
+  If you don't need this Game Object any more you should call `destroy` instead.
+
+  Returns:  PIXI.DisplayObject - This instance."
+  ([bitmap-text]
    (phaser->clj
-    (.getChildAt bitmap-text
-                 (clj->phaser index)))))
+    (.kill bitmap-text))))
+
+(defn post-update
+  "Automatically called by World.preUpdate."
+  ([bitmap-text]
+   (phaser->clj
+    (.postUpdate bitmap-text))))
+
+(defn pre-update
+  "Automatically called by World.preUpdate.
+
+  Returns:  boolean - True if the BitmapText was rendered, otherwise false."
+  ([bitmap-text]
+   (phaser->clj
+    (.preUpdate bitmap-text))))
+
+(defn purge-glyphs
+  "If a BitmapText changes from having a large number of characters to having very few characters it will cause lots of
+  Sprites to be retained in the BitmapText._glyphs array. Although they are not attached to the display list they
+  still take up memory while sat in the glyphs pool waiting to be re-used in the future.
+
+  If you know that the BitmapText will not grow any larger then you can purge out the excess glyphs from the pool 
+  by calling this method.
+
+  Calling this doesn't prevent you from increasing the length of the text again in the future.
+
+  Returns:  integer - The amount of glyphs removed from the pool."
+  ([bitmap-text]
+   (phaser->clj
+    (.purgeGlyphs bitmap-text))))
 
 (defn remove-child
   "Removes a child from the container.
@@ -225,21 +242,73 @@
                      (clj->phaser begin-index)
                      (clj->phaser end-index)))))
 
-(defn get-bounds
-  "Retrieves the bounds of the displayObjectContainer as a rectangle. The bounds calculation takes all visible children into consideration.
-
-  Returns:  Rectangle - The rectangular bounding area"
+(defn remove-stage-reference
+  "Removes the current stage reference from the container and all of its children."
   ([bitmap-text]
    (phaser->clj
-    (.getBounds bitmap-text))))
+    (.removeStageReference bitmap-text))))
 
-(defn get-local-bounds
-  "Retrieves the non-global local bounds of the displayObjectContainer as a rectangle. The calculation takes all visible children into consideration.
+(defn reset
+  "Resets the Game Object.
 
-  Returns:  Rectangle - The rectangular bounding area"
+  This moves the Game Object to the given x/y world coordinates and sets `fresh`, `exists`, 
+  `visible` and `renderable` to true.
+
+  If this Game Object has the LifeSpan component it will also set `alive` to true and `health` to the given value.
+
+  If this Game Object has a Physics Body it will reset the Body.
+
+  Parameters:
+    * bitmap-text (Phaser.BitmapText) - Targeted instance for method
+    * x (number) - The x coordinate (in world space) to position the Game Object at.
+    * y (number) - The y coordinate (in world space) to position the Game Object at.
+    * health (number) {optional} - The health to give the Game Object if it has the Health component.
+
+  Returns:  PIXI.DisplayObject - This instance."
+  ([bitmap-text x y]
+   (phaser->clj
+    (.reset bitmap-text
+            (clj->phaser x)
+            (clj->phaser y))))
+  ([bitmap-text x y health]
+   (phaser->clj
+    (.reset bitmap-text
+            (clj->phaser x)
+            (clj->phaser y)
+            (clj->phaser health)))))
+
+(defn revive
+  "Brings a 'dead' Game Object back to life, optionally resetting its health value in the process.
+
+  A resurrected Game Object has its `alive`, `exists` and `visible` properties all set to true.
+
+  It will dispatch the `onRevived` event. Listen to `events.onRevived` for the signal.
+
+  Parameters:
+    * bitmap-text (Phaser.BitmapText) - Targeted instance for method
+    * health (number) {optional} - The health to give the Game Object. Only set if the GameObject has the Health component.
+
+  Returns:  PIXI.DisplayObject - This instance."
   ([bitmap-text]
    (phaser->clj
-    (.getLocalBounds bitmap-text))))
+    (.revive bitmap-text)))
+  ([bitmap-text health]
+   (phaser->clj
+    (.revive bitmap-text
+             (clj->phaser health)))))
+
+(defn set-child-index
+  "Changes the position of an existing child in the display object container
+
+  Parameters:
+    * bitmap-text (Phaser.BitmapText) - Targeted instance for method
+    * child (PIXI.DisplayObject) - The child DisplayObject instance for which you want to change the index number
+    * index (Number) - The resulting index number for the child display object"
+  ([bitmap-text child index]
+   (phaser->clj
+    (.setChildIndex bitmap-text
+                    (clj->phaser child)
+                    (clj->phaser index)))))
 
 (defn set-stage-reference
   "Sets the containers Stage reference. This is the Stage that this object, and all of its children, is connected to.
@@ -252,42 +321,31 @@
     (.setStageReference bitmap-text
                         (clj->phaser stage)))))
 
-(defn remove-stage-reference
-  "Removes the current stage reference from the container and all of its children."
-  ([bitmap-text]
-   (phaser->clj
-    (.removeStageReference bitmap-text))))
+(defn set-text
+  "The text to be displayed by this BitmapText object.
 
-(defn destroy
-  "Destroy this DisplayObject.
-  Removes all references to transformCallbacks, its parent, the stage, filters, bounds, mask and cached Sprites."
-  ([bitmap-text]
-   (phaser->clj
-    (.destroy bitmap-text))))
-
-(defn generate-texture
-  "Useful function that returns a texture of the displayObject object that can then be used to create sprites
-  This can be quite useful if your displayObject is static / complicated and needs to be reused multiple times.
+  It's faster to use `BitmapText.text = string`, but this is kept for backwards compatibility.
 
   Parameters:
     * bitmap-text (Phaser.BitmapText) - Targeted instance for method
-    * resolution (Number) - The resolution of the texture being generated
-    * scale-mode (Number) - See PIXI.scaleModes for possible values
-    * renderer (PIXI.CanvasRenderer | PIXI.WebGLRenderer) - The renderer used to generate the texture.
-
-  Returns:  PIXI.Texture - a texture of the graphics object"
-  ([bitmap-text resolution scale-mode renderer]
+    * text (string) - The text to be displayed by this BitmapText object."
+  ([bitmap-text text]
    (phaser->clj
-    (.generateTexture bitmap-text
-                      (clj->phaser resolution)
-                      (clj->phaser scale-mode)
-                      (clj->phaser renderer)))))
+    (.setText bitmap-text
+              (clj->phaser text)))))
 
-(defn update-cache
-  "Generates and updates the cached sprite for this object."
-  ([bitmap-text]
+(defn swap-children
+  "Swaps the position of 2 Display Objects within this container.
+
+  Parameters:
+    * bitmap-text (Phaser.BitmapText) - Targeted instance for method
+    * child (PIXI.DisplayObject) - -
+    * child-2 (PIXI.DisplayObject) - -"
+  ([bitmap-text child child-2]
    (phaser->clj
-    (.updateCache bitmap-text))))
+    (.swapChildren bitmap-text
+                   (clj->phaser child)
+                   (clj->phaser child-2)))))
 
 (defn to-global
   "Calculates the global position of the display object
@@ -308,7 +366,7 @@
   Parameters:
     * bitmap-text (Phaser.BitmapText) - Targeted instance for method
     * position (Point) - The world origin to calculate from
-    * from (PIXI.DisplayObject) {optional}  - The DisplayObject to calculate the global position from
+    * from (PIXI.DisplayObject) {optional} - The DisplayObject to calculate the global position from
 
   Returns:  Point - A point object representing the position of this object"
   ([bitmap-text position]
@@ -329,66 +387,8 @@
    (phaser->clj
     (.update bitmap-text))))
 
-(defn revive
-  "Brings a 'dead' Game Object back to life, optionally resetting its health value in the process.
-  
-  A resurrected Game Object has its `alive`, `exists` and `visible` properties all set to true.
-  
-  It will dispatch the `onRevived` event. Listen to `events.onRevived` for the signal.
-
-  Parameters:
-    * bitmap-text (Phaser.BitmapText) - Targeted instance for method
-    * health (number) {optional}  - The health to give the Game Object. Only set if the GameObject has the Health component.
-
-  Returns:  PIXI.DisplayObject - This instance."
+(defn update-cache
+  "Generates and updates the cached sprite for this object."
   ([bitmap-text]
    (phaser->clj
-    (.revive bitmap-text)))
-  ([bitmap-text health]
-   (phaser->clj
-    (.revive bitmap-text
-             (clj->phaser health)))))
-
-(defn kill
-  "Kills a Game Object. A killed Game Object has its `alive`, `exists` and `visible` properties all set to false.
-  
-  It will dispatch the `onKilled` event. You can listen to `events.onKilled` for the signal.
-  
-  Note that killing a Game Object is a way for you to quickly recycle it in an object pool, 
-  it doesn't destroy the object or free it up from memory.
-  
-  If you don't need this Game Object any more you should call `destroy` instead.
-
-  Returns:  PIXI.DisplayObject - This instance."
-  ([bitmap-text]
-   (phaser->clj
-    (.kill bitmap-text))))
-
-(defn reset
-  "Resets the Game Object.
-  
-  This moves the Game Object to the given x/y world coordinates and sets `fresh`, `exists`, 
-  `visible` and `renderable` to true.
-  
-  If this Game Object has the LifeSpan component it will also set `alive` to true and `health` to the given value.
-  
-  If this Game Object has a Physics Body it will reset the Body.
-
-  Parameters:
-    * bitmap-text (Phaser.BitmapText) - Targeted instance for method
-    * x (number) - The x coordinate (in world space) to position the Game Object at.
-    * y (number) - The y coordinate (in world space) to position the Game Object at.
-    * health (number) {optional}  - The health to give the Game Object if it has the Health component.
-
-  Returns:  PIXI.DisplayObject - This instance."
-  ([bitmap-text x y]
-   (phaser->clj
-    (.reset bitmap-text
-            (clj->phaser x)
-            (clj->phaser y))))
-  ([bitmap-text x y health]
-   (phaser->clj
-    (.reset bitmap-text
-            (clj->phaser x)
-            (clj->phaser y)
-            (clj->phaser health)))))
+    (.updateCache bitmap-text))))

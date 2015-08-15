@@ -16,6 +16,12 @@
                       (clj->phaser uniforms)
                       (clj->phaser fragment-src))))
 
+(defn destroy
+  "Clear down this Filter and null out references"
+  ([filter]
+   (phaser->clj
+    (.destroy filter))))
+
 (defn init
   "Should be over-ridden."
   ([filter]
@@ -40,7 +46,7 @@
 
   Parameters:
     * filter (Phaser.Filter) - Targeted instance for method
-    * pointer (Phaser.Pointer) {optional}  - A Pointer object to use for the filter. The coordinates are mapped to the mouse uniform."
+    * pointer (Phaser.Pointer) {optional} - A Pointer object to use for the filter. The coordinates are mapped to the mouse uniform."
   ([filter]
    (phaser->clj
     (.update filter)))
@@ -48,9 +54,3 @@
    (phaser->clj
     (.update filter
              (clj->phaser pointer)))))
-
-(defn destroy
-  "Clear down this Filter and null out references"
-  ([filter]
-   (phaser->clj
-    (.destroy filter))))

@@ -13,6 +13,18 @@
    (js/PIXI.BaseTexture. (clj->phaser source)
                          (clj->phaser scale-mode))))
 
+(defn destroy
+  "Destroys this base texture"
+  ([base-texture]
+   (phaser->clj
+    (.destroy base-texture))))
+
+(defn dirty
+  "Sets all glTextures to be dirty."
+  ([base-texture]
+   (phaser->clj
+    (.dirty base-texture))))
+
 (defn force-loaded
   "Forces this BaseTexture to be set as loaded, with the given width and height.
   Then calls BaseTexture.dirty.
@@ -28,42 +40,25 @@
                   (clj->phaser width)
                   (clj->phaser height)))))
 
-(defn destroy
-  "Destroys this base texture"
-  ([base-texture]
-   (phaser->clj
-    (.destroy base-texture))))
-
-(defn update-source-image
-  "Changes the source image of the texture
+(defn from-canvas-
+  "Helper function that creates a base texture from the given canvas element.
 
   Parameters:
-    * base-texture (PIXI.BaseTexture) - Targeted instance for method
-    * new-src (String) - the path of the image"
-  ([base-texture new-src]
-   (phaser->clj
-    (.updateSourceImage base-texture
-                        (clj->phaser new-src)))))
+    * canvas (Canvas) - The canvas element source of the texture
+    * scale-mode (Number) - See PIXI.scaleModes for possible values
 
-(defn dirty
-  "Sets all glTextures to be dirty."
-  ([base-texture]
+  Returns:   - BaseTexture"
+  ([canvas scale-mode]
    (phaser->clj
-    (.dirty base-texture))))
-
-(defn unload-from-gpu
-  "Removes the base texture from the GPU, useful for managing resources on the GPU.
-  Atexture is still 100% usable and will simply be reuploaded if there is a sprite on screen that is using it."
-  ([base-texture]
-   (phaser->clj
-    (.unloadFromGPU base-texture))))
+    (.fromCanvas js/PIXI.BaseTexture
+                 (clj->phaser canvas)
+                 (clj->phaser scale-mode)))))
 
 (defn from-image-
   "Helper function that creates a base texture from the given image url.
   If the image is not in the base texture cache it will be created and loaded.
 
   Parameters:
-    * base-texture (PIXI.BaseTexture) - Targeted instance for method
     * image-url (String) - The image url of the texture
     * crossorigin (Boolean) - -
     * scale-mode (Number) - See PIXI.scaleModes for possible values
@@ -76,17 +71,20 @@
                 (clj->phaser crossorigin)
                 (clj->phaser scale-mode)))))
 
-(defn from-canvas-
-  "Helper function that creates a base texture from the given canvas element.
+(defn unload-from-gpu
+  "Removes the base texture from the GPU, useful for managing resources on the GPU.
+  Atexture is still 100% usable and will simply be reuploaded if there is a sprite on screen that is using it."
+  ([base-texture]
+   (phaser->clj
+    (.unloadFromGPU base-texture))))
+
+(defn update-source-image
+  "Changes the source image of the texture
 
   Parameters:
     * base-texture (PIXI.BaseTexture) - Targeted instance for method
-    * canvas (Canvas) - The canvas element source of the texture
-    * scale-mode (Number) - See PIXI.scaleModes for possible values
-
-  Returns:   - BaseTexture"
-  ([canvas scale-mode]
+    * new-src (String) - the path of the image"
+  ([base-texture new-src]
    (phaser->clj
-    (.fromCanvas js/PIXI.BaseTexture
-                 (clj->phaser canvas)
-                 (clj->phaser scale-mode)))))
+    (.updateSourceImage base-texture
+                        (clj->phaser new-src)))))

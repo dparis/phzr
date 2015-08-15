@@ -1,11 +1,11 @@
 (ns phzr.impl.accessors.physics.p2.spring)
 
 (def spring-get-properties
-  {:game "game"
-   :world "world"
-   :data "data"})
+  {:data "data"
+   :game "game"
+   :world "world"})
 
 (def spring-set-properties
-  {:game "game"
-   :world "world"
-   :data "data"})
+  {:data "data"
+   :game "game"
+   :world "world"})

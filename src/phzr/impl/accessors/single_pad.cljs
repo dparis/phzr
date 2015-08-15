@@ -1,25 +1,25 @@
 (ns phzr.impl.accessors.single-pad)
 
 (def single-pad-get-properties
-  {:index "index"
-   :game "game"
-   :on-disconnect-callback "onDisconnectCallback"
-   :on-connect-callback "onConnectCallback"
+  {:callback-context "callbackContext"
    :connected "connected"
-   :on-down-callback "onDownCallback"
    :dead-zone "deadZone"
-   :on-float-callback "onFloatCallback"
-   :callback-context "callbackContext"
+   :game "game"
+   :index "index"
    :on-axis-callback "onAxisCallback"
+   :on-connect-callback "onConnectCallback"
+   :on-disconnect-callback "onDisconnectCallback"
+   :on-down-callback "onDownCallback"
+   :on-float-callback "onFloatCallback"
    :on-up-callback "onUpCallback"})
 
 (def single-pad-set-properties
-  {:game "game"
-   :on-disconnect-callback "onDisconnectCallback"
-   :on-connect-callback "onConnectCallback"
-   :on-down-callback "onDownCallback"
+  {:callback-context "callbackContext"
    :dead-zone "deadZone"
-   :on-float-callback "onFloatCallback"
-   :callback-context "callbackContext"
+   :game "game"
    :on-axis-callback "onAxisCallback"
+   :on-connect-callback "onConnectCallback"
+   :on-disconnect-callback "onDisconnectCallback"
+   :on-down-callback "onDownCallback"
+   :on-float-callback "onFloatCallback"
    :on-up-callback "onUpCallback"})

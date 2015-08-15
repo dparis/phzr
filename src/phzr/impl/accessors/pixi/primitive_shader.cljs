@@ -1,13 +1,13 @@
 (ns phzr.impl.accessors.pixi.primitive-shader)
 
 (def primitive-shader-get-properties
-  {:gl "gl"
+  {:fragment-src "fragmentSrc"
+   :gl "gl"
    :program "program"
-   :fragment-src "fragmentSrc"
    :vertex-src "vertexSrc"})
 
 (def primitive-shader-set-properties
-  {:gl "gl"
+  {:fragment-src "fragmentSrc"
+   :gl "gl"
    :program "program"
-   :fragment-src "fragmentSrc"
    :vertex-src "vertexSrc"})

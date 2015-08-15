@@ -2,22 +2,22 @@
 
 (def ms-pointer-get-properties
   {:button "button"
-   :game "game"
-   :pointer-up-callback "pointerUpCallback"
-   :pointer-down-callback "pointerDownCallback"
-   :pointer-move-callback "pointerMoveCallback"
-   :event "event"
    :callback-context "callbackContext"
    :capture "capture"
-   :enabled "enabled"})
+   :enabled "enabled"
+   :event "event"
+   :game "game"
+   :pointer-down-callback "pointerDownCallback"
+   :pointer-move-callback "pointerMoveCallback"
+   :pointer-up-callback "pointerUpCallback"})
 
 (def ms-pointer-set-properties
   {:button "button"
-   :game "game"
-   :pointer-up-callback "pointerUpCallback"
-   :pointer-down-callback "pointerDownCallback"
-   :pointer-move-callback "pointerMoveCallback"
-   :event "event"
    :callback-context "callbackContext"
    :capture "capture"
-   :enabled "enabled"})
+   :enabled "enabled"
+   :event "event"
+   :game "game"
+   :pointer-down-callback "pointerDownCallback"
+   :pointer-move-callback "pointerMoveCallback"
+   :pointer-up-callback "pointerUpCallback"})

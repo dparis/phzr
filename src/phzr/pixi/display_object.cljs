@@ -16,6 +16,24 @@
    (phaser->clj
     (.destroy display-object))))
 
+(defn generate-texture
+  "Useful function that returns a texture of the displayObject object that can then be used to create sprites
+  This can be quite useful if your displayObject is static / complicated and needs to be reused multiple times.
+
+  Parameters:
+    * display-object (PIXI.DisplayObject) - Targeted instance for method
+    * resolution (Number) - The resolution of the texture being generated
+    * scale-mode (Number) - See PIXI.scaleModes for possible values
+    * renderer (PIXI.CanvasRenderer | PIXI.WebGLRenderer) - The renderer used to generate the texture.
+
+  Returns:  PIXI.Texture - a texture of the graphics object"
+  ([display-object resolution scale-mode renderer]
+   (phaser->clj
+    (.generateTexture display-object
+                      (clj->phaser resolution)
+                      (clj->phaser scale-mode)
+                      (clj->phaser renderer)))))
+
 (defn get-bounds
   "Retrieves the bounds of the displayObject as a rectangle object
 
@@ -37,6 +55,12 @@
    (phaser->clj
     (.getLocalBounds display-object))))
 
+(defn pre-update
+  "Empty, to be overridden by classes that require it."
+  ([display-object]
+   (phaser->clj
+    (.preUpdate display-object))))
+
 (defn set-stage-reference
   "Sets the object's stage reference, the stage this object is connected to
 
@@ -47,36 +71,6 @@
    (phaser->clj
     (.setStageReference display-object
                         (clj->phaser stage)))))
-
-(defn pre-update
-  "Empty, to be overridden by classes that require it."
-  ([display-object]
-   (phaser->clj
-    (.preUpdate display-object))))
-
-(defn generate-texture
-  "Useful function that returns a texture of the displayObject object that can then be used to create sprites
-  This can be quite useful if your displayObject is static / complicated and needs to be reused multiple times.
-
-  Parameters:
-    * display-object (PIXI.DisplayObject) - Targeted instance for method
-    * resolution (Number) - The resolution of the texture being generated
-    * scale-mode (Number) - See PIXI.scaleModes for possible values
-    * renderer (PIXI.CanvasRenderer | PIXI.WebGLRenderer) - The renderer used to generate the texture.
-
-  Returns:  PIXI.Texture - a texture of the graphics object"
-  ([display-object resolution scale-mode renderer]
-   (phaser->clj
-    (.generateTexture display-object
-                      (clj->phaser resolution)
-                      (clj->phaser scale-mode)
-                      (clj->phaser renderer)))))
-
-(defn update-cache
-  "Generates and updates the cached sprite for this object."
-  ([display-object]
-   (phaser->clj
-    (.updateCache display-object))))
 
 (defn to-global
   "Calculates the global position of the display object
@@ -97,7 +91,7 @@
   Parameters:
     * display-object (PIXI.DisplayObject) - Targeted instance for method
     * position (Point) - The world origin to calculate from
-    * from (PIXI.DisplayObject) {optional}  - The DisplayObject to calculate the global position from
+    * from (PIXI.DisplayObject) {optional} - The DisplayObject to calculate the global position from
 
   Returns:  Point - A point object representing the position of this object"
   ([display-object position]
@@ -109,3 +103,9 @@
     (.toLocal display-object
               (clj->phaser position)
               (clj->phaser from)))))
+
+(defn update-cache
+  "Generates and updates the cached sprite for this object."
+  ([display-object]
+   (phaser->clj
+    (.updateCache display-object))))

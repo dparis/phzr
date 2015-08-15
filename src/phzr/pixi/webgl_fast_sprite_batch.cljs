@@ -9,17 +9,6 @@
   ([]
    (js/PIXI.WebGLFastSpriteBatch.)))
 
-(defn set-context
-  "Sets the WebGL Context.
-
-  Parameters:
-    * webgl-fast-sprite-batch (PIXI.WebGLFastSpriteBatch) - Targeted instance for method
-    * gl (WebGLContext) - the current WebGL drawing context"
-  ([webgl-fast-sprite-batch gl]
-   (phaser->clj
-    (.setContext webgl-fast-sprite-batch
-                 (clj->phaser gl)))))
-
 (defn begin
   "
 
@@ -38,6 +27,12 @@
   ([webgl-fast-sprite-batch]
    (phaser->clj
     (.end webgl-fast-sprite-batch))))
+
+(defn flush
+  ""
+  ([webgl-fast-sprite-batch]
+   (phaser->clj
+    (.flush webgl-fast-sprite-batch))))
 
 (defn render
   "
@@ -61,20 +56,25 @@
     (.renderSprite webgl-fast-sprite-batch
                    (clj->phaser sprite)))))
 
-(defn flush
-  ""
-  ([webgl-fast-sprite-batch]
-   (phaser->clj
-    (.flush webgl-fast-sprite-batch))))
+(defn set-context
+  "Sets the WebGL Context.
 
-(defn stop
-  ""
-  ([webgl-fast-sprite-batch]
+  Parameters:
+    * webgl-fast-sprite-batch (PIXI.WebGLFastSpriteBatch) - Targeted instance for method
+    * gl (WebGLContext) - the current WebGL drawing context"
+  ([webgl-fast-sprite-batch gl]
    (phaser->clj
-    (.stop webgl-fast-sprite-batch))))
+    (.setContext webgl-fast-sprite-batch
+                 (clj->phaser gl)))))
 
 (defn start
   ""
   ([webgl-fast-sprite-batch]
    (phaser->clj
     (.start webgl-fast-sprite-batch))))
+
+(defn stop
+  ""
+  ([webgl-fast-sprite-batch]
+   (phaser->clj
+    (.stop webgl-fast-sprite-batch))))

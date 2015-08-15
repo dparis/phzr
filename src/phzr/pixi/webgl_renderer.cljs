@@ -25,11 +25,23 @@
                            (clj->phaser height)
                            (clj->phaser options))))
 
+(defn destroy
+  "Removes everything from the renderer (event listeners, spritebatch, etc...)"
+  ([webgl-renderer]
+   (phaser->clj
+    (.destroy webgl-renderer))))
+
 (defn init-context
   ""
   ([webgl-renderer]
    (phaser->clj
     (.initContext webgl-renderer))))
+
+(defn map-blend-modes
+  "Maps Pixi blend modes to WebGL blend modes."
+  ([webgl-renderer]
+   (phaser->clj
+    (.mapBlendModes webgl-renderer))))
 
 (defn render
   "Renders the stage to its webGL view
@@ -80,15 +92,3 @@
    (phaser->clj
     (.updateTexture webgl-renderer
                     (clj->phaser texture)))))
-
-(defn destroy
-  "Removes everything from the renderer (event listeners, spritebatch, etc...)"
-  ([webgl-renderer]
-   (phaser->clj
-    (.destroy webgl-renderer))))
-
-(defn map-blend-modes
-  "Maps Pixi blend modes to WebGL blend modes."
-  ([webgl-renderer]
-   (phaser->clj
-    (.mapBlendModes webgl-renderer))))

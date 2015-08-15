@@ -1,19 +1,19 @@
 (ns phzr.impl.accessors.timer-event)
 
 (def timer-event-get-properties
-  {:delay "delay"
-   :tick "tick"
-   :repeat-count "repeatCount"
-   :loop "loop"
+  {:args "args"
    :callback "callback"
    :callback-context "callbackContext"
-   :args "args"})
+   :delay "delay"
+   :loop "loop"
+   :repeat-count "repeatCount"
+   :tick "tick"})
 
 (def timer-event-set-properties
-  {:delay "delay"
-   :tick "tick"
-   :repeat-count "repeatCount"
-   :loop "loop"
+  {:args "args"
    :callback "callback"
    :callback-context "callbackContext"
-   :args "args"})
+   :delay "delay"
+   :loop "loop"
+   :repeat-count "repeatCount"
+   :tick "tick"})

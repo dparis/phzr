@@ -1,13 +1,13 @@
 (ns phzr.impl.accessors.pixi.canvas-buffer)
 
 (def canvas-buffer-get-properties
-  {:width "width"
+  {:canvas "canvas"
+   :context "context"
    :height "height"
-   :canvas "canvas"
-   :context "context"})
+   :width "width"})
 
 (def canvas-buffer-set-properties
-  {:width "width"
+  {:canvas "canvas"
+   :context "context"
    :height "height"
-   :canvas "canvas"
-   :context "context"})
+   :width "width"})

@@ -1,27 +1,27 @@
 (ns phzr.impl.accessors.animation-manager)
 
 (def animation-manager-get-properties
-  {:paused "paused"
+  {:current-anim "currentAnim"
+   :current-frame "currentFrame"
    :frame "frame"
    :frame-data "frameData"
-   :game "game"
-   :name "name"
    :frame-name "frameName"
-   :is-loaded "isLoaded"
-   :current-frame "currentFrame"
-   :sprite "sprite"
    :frame-total "frameTotal"
-   :update-if-visible "updateIfVisible"
-   :current-anim "currentAnim"})
+   :game "game"
+   :is-loaded "isLoaded"
+   :name "name"
+   :paused "paused"
+   :sprite "sprite"
+   :update-if-visible "updateIfVisible"})
 
 (def animation-manager-set-properties
-  {:paused "paused"
-   :frame "frame"
-   :game "game"
-   :name "name"
-   :frame-name "frameName"
-   :is-loaded "isLoaded"
+  {:current-anim "currentAnim"
    :current-frame "currentFrame"
+   :frame "frame"
+   :frame-name "frameName"
+   :game "game"
+   :is-loaded "isLoaded"
+   :name "name"
+   :paused "paused"
    :sprite "sprite"
-   :update-if-visible "updateIfVisible"
-   :current-anim "currentAnim"})
+   :update-if-visible "updateIfVisible"})

@@ -12,86 +12,6 @@
   ([sprite]
    (js/Phaser.Physics.Arcade.Body. (clj->phaser sprite))))
 
-(defn destroy
-  "Removes this bodys reference to its parent sprite, freeing it up for gc."
-  ([body]
-   (phaser->clj
-    (.destroy body))))
-
-(defn set-size
-  "You can modify the size of the physics Body to be any dimension you need.
-  So it could be smaller or larger than the parent Sprite. You can also control the x and y offset, which
-  is the position of the Body relative to the top-left of the Sprite.
-
-  Parameters:
-    * body (Phaser.Physics.Arcade.Body) - Targeted instance for method
-    * width (number) - The width of the Body.
-    * height (number) - The height of the Body.
-    * offset-x (number) {optional}  - The X offset of the Body from the Sprite position.
-    * offset-y (number) {optional}  - The Y offset of the Body from the Sprite position."
-  ([body width height]
-   (phaser->clj
-    (.setSize body
-              (clj->phaser width)
-              (clj->phaser height))))
-  ([body width height offset-x]
-   (phaser->clj
-    (.setSize body
-              (clj->phaser width)
-              (clj->phaser height)
-              (clj->phaser offset-x))))
-  ([body width height offset-x offset-y]
-   (phaser->clj
-    (.setSize body
-              (clj->phaser width)
-              (clj->phaser height)
-              (clj->phaser offset-x)
-              (clj->phaser offset-y)))))
-
-(defn reset
-  "Resets all Body values (velocity, acceleration, rotation, etc)
-
-  Parameters:
-    * body (Phaser.Physics.Arcade.Body) - Targeted instance for method
-    * x (number) - The new x position of the Body.
-    * y (number) - The new y position of the Body."
-  ([body x y]
-   (phaser->clj
-    (.reset body
-            (clj->phaser x)
-            (clj->phaser y)))))
-
-(defn hit-test
-  "Tests if a world point lies within this Body.
-
-  Parameters:
-    * body (Phaser.Physics.Arcade.Body) - Targeted instance for method
-    * x (number) - The world x coordinate to test.
-    * y (number) - The world y coordinate to test.
-
-  Returns:  boolean - True if the given coordinates are inside this Body, otherwise false."
-  ([body x y]
-   (phaser->clj
-    (.hitTest body
-              (clj->phaser x)
-              (clj->phaser y)))))
-
-(defn on-floor
-  "Returns true if the bottom of this Body is in contact with either the world bounds or a tile.
-
-  Returns:  boolean - True if in contact with either the world bounds or a tile."
-  ([body]
-   (phaser->clj
-    (.onFloor body))))
-
-(defn on-wall
-  "Returns true if either side of this Body is in contact with either the world bounds or a tile.
-
-  Returns:  boolean - True if in contact with either the world bounds or a tile."
-  ([body]
-   (phaser->clj
-    (.onWall body))))
-
 (defn delta-abs-x
   "Returns the absolute delta x value.
 
@@ -132,6 +52,43 @@
    (phaser->clj
     (.deltaZ body))))
 
+(defn destroy
+  "Removes this bodys reference to its parent sprite, freeing it up for gc."
+  ([body]
+   (phaser->clj
+    (.destroy body))))
+
+(defn hit-test
+  "Tests if a world point lies within this Body.
+
+  Parameters:
+    * body (Phaser.Physics.Arcade.Body) - Targeted instance for method
+    * x (number) - The world x coordinate to test.
+    * y (number) - The world y coordinate to test.
+
+  Returns:  boolean - True if the given coordinates are inside this Body, otherwise false."
+  ([body x y]
+   (phaser->clj
+    (.hitTest body
+              (clj->phaser x)
+              (clj->phaser y)))))
+
+(defn on-floor
+  "Returns true if the bottom of this Body is in contact with either the world bounds or a tile.
+
+  Returns:  boolean - True if in contact with either the world bounds or a tile."
+  ([body]
+   (phaser->clj
+    (.onFloor body))))
+
+(defn on-wall
+  "Returns true if either side of this Body is in contact with either the world bounds or a tile.
+
+  Returns:  boolean - True if in contact with either the world bounds or a tile."
+  ([body]
+   (phaser->clj
+    (.onWall body))))
+
 (defn render
   "Render Sprite Body.
 
@@ -139,8 +96,8 @@
     * body (Phaser.Physics.Arcade.Body) - Targeted instance for method
     * context (object) - The context to render to.
     * body (Phaser.Physics.Arcade.Body) - The Body to render the info of.
-    * color (string) {optional}  - color of the debug info to be rendered. (format is css color string).
-    * filled (boolean) {optional}  - Render the objected as a filled (default, true) or a stroked (false)"
+    * color (string) {optional} - color of the debug info to be rendered. (format is css color string).
+    * filled (boolean) {optional} - Render the objected as a filled (default, true) or a stroked (false)"
   ([body context body]
    (phaser->clj
     (.render body
@@ -168,7 +125,7 @@
     * body (Phaser.Physics.Arcade.Body) - The Body to render the info of.
     * x (number) - X position of the debug info to be rendered.
     * y (number) - Y position of the debug info to be rendered.
-    * color (string) {optional}  - color of the debug info to be rendered. (format is css color string)."
+    * color (string) {optional} - color of the debug info to be rendered. (format is css color string)."
   ([body body x y]
    (phaser->clj
     (.renderBodyInfo body
@@ -182,3 +139,46 @@
                      (clj->phaser x)
                      (clj->phaser y)
                      (clj->phaser color)))))
+
+(defn reset
+  "Resets all Body values (velocity, acceleration, rotation, etc)
+
+  Parameters:
+    * body (Phaser.Physics.Arcade.Body) - Targeted instance for method
+    * x (number) - The new x position of the Body.
+    * y (number) - The new y position of the Body."
+  ([body x y]
+   (phaser->clj
+    (.reset body
+            (clj->phaser x)
+            (clj->phaser y)))))
+
+(defn set-size
+  "You can modify the size of the physics Body to be any dimension you need.
+  So it could be smaller or larger than the parent Sprite. You can also control the x and y offset, which
+  is the position of the Body relative to the top-left of the Sprite.
+
+  Parameters:
+    * body (Phaser.Physics.Arcade.Body) - Targeted instance for method
+    * width (number) - The width of the Body.
+    * height (number) - The height of the Body.
+    * offset-x (number) {optional} - The X offset of the Body from the Sprite position.
+    * offset-y (number) {optional} - The Y offset of the Body from the Sprite position."
+  ([body width height]
+   (phaser->clj
+    (.setSize body
+              (clj->phaser width)
+              (clj->phaser height))))
+  ([body width height offset-x]
+   (phaser->clj
+    (.setSize body
+              (clj->phaser width)
+              (clj->phaser height)
+              (clj->phaser offset-x))))
+  ([body width height offset-x offset-y]
+   (phaser->clj
+    (.setSize body
+              (clj->phaser width)
+              (clj->phaser height)
+              (clj->phaser offset-x)
+              (clj->phaser offset-y)))))

@@ -11,14 +11,6 @@
   ([game]
    (js/Phaser.Net. (clj->phaser game))))
 
-(defn get-host-name
-  "Returns the hostname given by the browser.
-
-  Returns:  string - "
-  ([net]
-   (phaser->clj
-    (.getHostName net))))
-
 (defn check-domain-name
   "Compares the given domain name against the hostname of the browser containing the game.
   If the domain name is found it returns true.
@@ -34,6 +26,45 @@
    (phaser->clj
     (.checkDomainName net
                       (clj->phaser domain)))))
+
+(defn decode-uri
+  "Returns the Query String as an object.
+  If you specify a parameter it will return just the value of that parameter, should it exist.
+
+  Parameters:
+    * net (Phaser.Net) - Targeted instance for method
+    * value (string) - The URI component to be decoded.
+
+  Returns:  string - The decoded value."
+  ([net value]
+   (phaser->clj
+    (.decodeURI net
+                (clj->phaser value)))))
+
+(defn get-host-name
+  "Returns the hostname given by the browser.
+
+  Returns:  string - "
+  ([net]
+   (phaser->clj
+    (.getHostName net))))
+
+(defn get-query-string
+  "Returns the Query String as an object.
+  If you specify a parameter it will return just the value of that parameter, should it exist.
+
+  Parameters:
+    * net (Phaser.Net) - Targeted instance for method
+    * parameter (string) {optional} - If specified this will return just the value for that key.
+
+  Returns:  [string | object] - An object containing the key value pairs found in the query string or just the value if a parameter was given."
+  ([net]
+   (phaser->clj
+    (.getQueryString net)))
+  ([net parameter]
+   (phaser->clj
+    (.getQueryString net
+                     (clj->phaser parameter)))))
 
 (defn update-query-string
   "Updates a value on the Query String and returns it in full.
@@ -56,34 +87,3 @@
                         (clj->phaser value)
                         (clj->phaser redirect)
                         (clj->phaser url)))))
-
-(defn get-query-string
-  "Returns the Query String as an object.
-  If you specify a parameter it will return just the value of that parameter, should it exist.
-
-  Parameters:
-    * net (Phaser.Net) - Targeted instance for method
-    * parameter (string) {optional}  - If specified this will return just the value for that key.
-
-  Returns:  [string | object] - An object containing the key value pairs found in the query string or just the value if a parameter was given."
-  ([net]
-   (phaser->clj
-    (.getQueryString net)))
-  ([net parameter]
-   (phaser->clj
-    (.getQueryString net
-                     (clj->phaser parameter)))))
-
-(defn decode-uri
-  "Returns the Query String as an object.
-  If you specify a parameter it will return just the value of that parameter, should it exist.
-
-  Parameters:
-    * net (Phaser.Net) - Targeted instance for method
-    * value (string) - The URI component to be decoded.
-
-  Returns:  string - The decoded value."
-  ([net value]
-   (phaser->clj
-    (.decodeURI net
-                (clj->phaser value)))))

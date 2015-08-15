@@ -1,27 +1,27 @@
 (ns phzr.impl.accessors.touch)
 
 (def touch-get-properties
-  {:prevent-default "preventDefault"
-   :game "game"
-   :touch-enter-callback "touchEnterCallback"
-   :touch-start-callback "touchStartCallback"
+  {:callback-context "callbackContext"
+   :enabled "enabled"
    :event "event"
+   :game "game"
+   :prevent-default "preventDefault"
+   :touch-cancel-callback "touchCancelCallback"
    :touch-end-callback "touchEndCallback"
-   :callback-context "callbackContext"
+   :touch-enter-callback "touchEnterCallback"
    :touch-leave-callback "touchLeaveCallback"
    :touch-move-callback "touchMoveCallback"
-   :enabled "enabled"
-   :touch-cancel-callback "touchCancelCallback"})
+   :touch-start-callback "touchStartCallback"})
 
 (def touch-set-properties
-  {:prevent-default "preventDefault"
-   :game "game"
-   :touch-enter-callback "touchEnterCallback"
-   :touch-start-callback "touchStartCallback"
+  {:callback-context "callbackContext"
+   :enabled "enabled"
    :event "event"
+   :game "game"
+   :prevent-default "preventDefault"
+   :touch-cancel-callback "touchCancelCallback"
    :touch-end-callback "touchEndCallback"
-   :callback-context "callbackContext"
+   :touch-enter-callback "touchEnterCallback"
    :touch-leave-callback "touchLeaveCallback"
    :touch-move-callback "touchMoveCallback"
-   :enabled "enabled"
-   :touch-cancel-callback "touchCancelCallback"})
+   :touch-start-callback "touchStartCallback"})

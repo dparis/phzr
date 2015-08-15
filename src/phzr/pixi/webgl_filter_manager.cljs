@@ -8,47 +8,6 @@
   ([]
    (js/PIXI.WebGLFilterManager.)))
 
-(defn set-context
-  "Initialises the context and the properties.
-
-  Parameters:
-    * webgl-filter-manager (PIXI.WebGLFilterManager) - Targeted instance for method
-    * gl (WebGLContext) - the current WebGL drawing context"
-  ([webgl-filter-manager gl]
-   (phaser->clj
-    (.setContext webgl-filter-manager
-                 (clj->phaser gl)))))
-
-(defn begin
-  "
-
-  Parameters:
-    * webgl-filter-manager (PIXI.WebGLFilterManager) - Targeted instance for method
-    * render-session (RenderSession) - -
-    * buffer (ArrayBuffer) - -"
-  ([webgl-filter-manager render-session buffer]
-   (phaser->clj
-    (.begin webgl-filter-manager
-            (clj->phaser render-session)
-            (clj->phaser buffer)))))
-
-(defn push-filter
-  "Applies the filter and adds it to the current filter stack.
-
-  Parameters:
-    * webgl-filter-manager (PIXI.WebGLFilterManager) - Targeted instance for method
-    * filter-block (Object) - the filter that will be pushed to the current filter stack"
-  ([webgl-filter-manager filter-block]
-   (phaser->clj
-    (.pushFilter webgl-filter-manager
-                 (clj->phaser filter-block)))))
-
-(defn pop-filter
-  "Removes the last filter from the filter stack and doesn't return it."
-  ([webgl-filter-manager]
-   (phaser->clj
-    (.popFilter webgl-filter-manager))))
-
 (defn apply-filter-pass
   "Applies the filter to the specified area.
 
@@ -66,14 +25,55 @@
                       (clj->phaser width)
                       (clj->phaser height)))))
 
-(defn init-shader-buffers
-  "Initialises the shader buffers."
-  ([webgl-filter-manager]
+(defn begin
+  "
+
+  Parameters:
+    * webgl-filter-manager (PIXI.WebGLFilterManager) - Targeted instance for method
+    * render-session (RenderSession) - -
+    * buffer (ArrayBuffer) - -"
+  ([webgl-filter-manager render-session buffer]
    (phaser->clj
-    (.initShaderBuffers webgl-filter-manager))))
+    (.begin webgl-filter-manager
+            (clj->phaser render-session)
+            (clj->phaser buffer)))))
 
 (defn destroy
   "Destroys the filter and removes it from the filter stack."
   ([webgl-filter-manager]
    (phaser->clj
     (.destroy webgl-filter-manager))))
+
+(defn init-shader-buffers
+  "Initialises the shader buffers."
+  ([webgl-filter-manager]
+   (phaser->clj
+    (.initShaderBuffers webgl-filter-manager))))
+
+(defn pop-filter
+  "Removes the last filter from the filter stack and doesn't return it."
+  ([webgl-filter-manager]
+   (phaser->clj
+    (.popFilter webgl-filter-manager))))
+
+(defn push-filter
+  "Applies the filter and adds it to the current filter stack.
+
+  Parameters:
+    * webgl-filter-manager (PIXI.WebGLFilterManager) - Targeted instance for method
+    * filter-block (Object) - the filter that will be pushed to the current filter stack"
+  ([webgl-filter-manager filter-block]
+   (phaser->clj
+    (.pushFilter webgl-filter-manager
+                 (clj->phaser filter-block)))))
+
+(defn set-context
+  "Initialises the context and the properties.
+
+  Parameters:
+    * webgl-filter-manager (PIXI.WebGLFilterManager) - Targeted instance for method
+    * gl (WebGLContext) - the current WebGL drawing context"
+  ([webgl-filter-manager gl]
+   (phaser->clj
+    (.setContext webgl-filter-manager
+                 (clj->phaser gl)))))

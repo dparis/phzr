@@ -1,23 +1,23 @@
 (ns phzr.impl.accessors.plugin)
 
 (def plugin-get-properties
-  {:has-render "hasRender"
-   :parent "parent"
+  {:active "active"
    :game "game"
-   :active "active"
-   :has-update "hasUpdate"
-   :has-pre-update "hasPreUpdate"
    :has-post-render "hasPostRender"
-   :visible "visible"
-   :has-post-update "hasPostUpdate"})
+   :has-post-update "hasPostUpdate"
+   :has-pre-update "hasPreUpdate"
+   :has-render "hasRender"
+   :has-update "hasUpdate"
+   :parent "parent"
+   :visible "visible"})
 
 (def plugin-set-properties
-  {:has-render "hasRender"
-   :parent "parent"
+  {:active "active"
    :game "game"
-   :active "active"
-   :has-update "hasUpdate"
-   :has-pre-update "hasPreUpdate"
    :has-post-render "hasPostRender"
-   :visible "visible"
-   :has-post-update "hasPostUpdate"})
+   :has-post-update "hasPostUpdate"
+   :has-pre-update "hasPreUpdate"
+   :has-render "hasRender"
+   :has-update "hasUpdate"
+   :parent "parent"
+   :visible "visible"})

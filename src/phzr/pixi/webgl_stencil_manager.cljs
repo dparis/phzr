@@ -8,32 +8,6 @@
   ([]
    (js/PIXI.WebGLStencilManager.)))
 
-(defn set-context
-  "Sets the drawing context to the one given in parameter.
-
-  Parameters:
-    * webgl-stencil-manager (PIXI.WebGLStencilManager) - Targeted instance for method
-    * gl (WebGLContext) - the current WebGL drawing context"
-  ([webgl-stencil-manager gl]
-   (phaser->clj
-    (.setContext webgl-stencil-manager
-                 (clj->phaser gl)))))
-
-(defn push-mask
-  "Applies the Mask and adds it to the current filter stack.
-
-  Parameters:
-    * webgl-stencil-manager (PIXI.WebGLStencilManager) - Targeted instance for method
-    * graphics (PIXI.Graphics) - -
-    * webgl-data (Array) - -
-    * render-session (Object) - -"
-  ([webgl-stencil-manager graphics webgl-data render-session]
-   (phaser->clj
-    (.pushMask webgl-stencil-manager
-               (clj->phaser graphics)
-               (clj->phaser webgl-data)
-               (clj->phaser render-session)))))
-
 (defn bind-graphics
   "TODO this does not belong here!
 
@@ -48,6 +22,12 @@
                    (clj->phaser graphics)
                    (clj->phaser webgl-data)
                    (clj->phaser render-session)))))
+
+(defn destroy
+  "Destroys the mask stack."
+  ([webgl-stencil-manager]
+   (phaser->clj
+    (.destroy webgl-stencil-manager))))
 
 (defn pop-stencil
   "
@@ -64,8 +44,28 @@
                  (clj->phaser webgl-data)
                  (clj->phaser render-session)))))
 
-(defn destroy
-  "Destroys the mask stack."
-  ([webgl-stencil-manager]
+(defn push-mask
+  "Applies the Mask and adds it to the current filter stack.
+
+  Parameters:
+    * webgl-stencil-manager (PIXI.WebGLStencilManager) - Targeted instance for method
+    * graphics (PIXI.Graphics) - -
+    * webgl-data (Array) - -
+    * render-session (Object) - -"
+  ([webgl-stencil-manager graphics webgl-data render-session]
    (phaser->clj
-    (.destroy webgl-stencil-manager))))
+    (.pushMask webgl-stencil-manager
+               (clj->phaser graphics)
+               (clj->phaser webgl-data)
+               (clj->phaser render-session)))))
+
+(defn set-context
+  "Sets the drawing context to the one given in parameter.
+
+  Parameters:
+    * webgl-stencil-manager (PIXI.WebGLStencilManager) - Targeted instance for method
+    * gl (WebGLContext) - the current WebGL drawing context"
+  ([webgl-stencil-manager gl]
+   (phaser->clj
+    (.setContext webgl-stencil-manager
+                 (clj->phaser gl)))))

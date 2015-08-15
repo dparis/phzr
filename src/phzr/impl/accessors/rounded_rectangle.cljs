@@ -1,16 +1,16 @@
 (ns phzr.impl.accessors.rounded-rectangle)
 
 (def rounded-rectangle-get-properties
-  {:x "x"
-   :y "y"
-   :width "width"
-   :height "height"
+  {:height "height"
    :radius "radius"
-   :type "type"})
+   :type "type"
+   :width "width"
+   :x "x"
+   :y "y"})
 
 (def rounded-rectangle-set-properties
-  {:x "x"
-   :y "y"
+  {:height "height"
+   :radius "radius"
    :width "width"
-   :height "height"
-   :radius "radius"})
+   :x "x"
+   :y "y"})

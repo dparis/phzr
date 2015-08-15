@@ -28,6 +28,34 @@
           (clj->phaser plugin)
           (clj->phaser parameter)))))
 
+(defn destroy
+  "Clear down this PluginManager, calls destroy on every plugin and nulls out references."
+  ([plugin-manager]
+   (phaser->clj
+    (.destroy plugin-manager))))
+
+(defn post-render
+  "Post-render is called after the Game Renderer and State.render have run.
+  It only calls plugins who have visible=true."
+  ([plugin-manager]
+   (phaser->clj
+    (.postRender plugin-manager))))
+
+(defn post-update
+  "PostUpdate is the last thing to be called before the world render.
+  In particular, it is called after the world postUpdate, which means the camera has been adjusted.
+  It only calls plugins who have active=true."
+  ([plugin-manager]
+   (phaser->clj
+    (.postUpdate plugin-manager))))
+
+(defn pre-update
+  "Pre-update is called at the very start of the update cycle, before any other subsystems have been updated (including Physics).
+  It only calls plugins who have active=true."
+  ([plugin-manager]
+   (phaser->clj
+    (.preUpdate plugin-manager))))
+
 (defn remove
   "Remove a Plugin from the PluginManager. It calls Plugin.destroy on the plugin before removing it from the manager.
 
@@ -45,28 +73,6 @@
    (phaser->clj
     (.removeAll plugin-manager))))
 
-(defn pre-update
-  "Pre-update is called at the very start of the update cycle, before any other subsystems have been updated (including Physics).
-  It only calls plugins who have active=true."
-  ([plugin-manager]
-   (phaser->clj
-    (.preUpdate plugin-manager))))
-
-(defn update
-  "Update is called after all the core subsystems (Input, Tweens, Sound, etc) and the State have updated, but before the render.
-  It only calls plugins who have active=true."
-  ([plugin-manager]
-   (phaser->clj
-    (.update plugin-manager))))
-
-(defn post-update
-  "PostUpdate is the last thing to be called before the world render.
-  In particular, it is called after the world postUpdate, which means the camera has been adjusted.
-  It only calls plugins who have active=true."
-  ([plugin-manager]
-   (phaser->clj
-    (.postUpdate plugin-manager))))
-
 (defn render
   "Render is called right after the Game Renderer completes, but before the State.render.
   It only calls plugins who have visible=true."
@@ -74,15 +80,9 @@
    (phaser->clj
     (.render plugin-manager))))
 
-(defn post-render
-  "Post-render is called after the Game Renderer and State.render have run.
-  It only calls plugins who have visible=true."
+(defn update
+  "Update is called after all the core subsystems (Input, Tweens, Sound, etc) and the State have updated, but before the render.
+  It only calls plugins who have active=true."
   ([plugin-manager]
    (phaser->clj
-    (.postRender plugin-manager))))
-
-(defn destroy
-  "Clear down this PluginManager, calls destroy on every plugin and nulls out references."
-  ([plugin-manager]
-   (phaser->clj
-    (.destroy plugin-manager))))
+    (.update plugin-manager))))
