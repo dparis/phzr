@@ -1,0 +1,58 @@
+(ns phzr.impl.accessors.scale-manager)
+
+(def ^:private scale-manager-constants
+  {:exact-fit "EXACT_FIT"
+   :no-scale "NO_SCALE"
+   :show-all "SHOW_ALL"
+   :resize "RESIZE"
+   :user-scale "USER_SCALE"})
+
+(def scale-manager-get-properties
+  {:is-game-portrait "isGamePortrait"
+   :is-full-screen "isFullScreen"
+   :aspect-ratio "aspectRatio"
+   :full-screen-scale-mode "fullScreenScaleMode"
+   :bounding-parent "boundingParent"
+   :is-portrait "isPortrait"
+   :is-game-landscape "isGameLandscape"
+   :screen-orientation "screenOrientation"
+   :scale-mode "scaleMode"
+   :grid "grid"
+   :width "width"
+   :parent-node "parentNode"
+   :full-screen-target "fullScreenTarget"
+   :on-orientation-change "onOrientationChange"
+   :bounds "bounds"
+   :parent-is-window "parentIsWindow"
+   :on-full-screen-change "onFullScreenChange"
+   :page-align-horizontally "pageAlignHorizontally"
+   :is-landscape "isLandscape"
+   :parent-scale-factor "parentScaleFactor"
+   :leave-incorrect-orientation "leaveIncorrectOrientation"
+   :window-constraints "windowConstraints"
+   :source-aspect-ratio "sourceAspectRatio"
+   :on-full-screen-init "onFullScreenInit"
+   :scale-factor "scaleFactor"
+   :on-size-change "onSizeChange"
+   :page-align-vertically "pageAlignVertically"
+   :enter-incorrect-orientation "enterIncorrectOrientation"
+   :on-full-screen-error "onFullScreenError"
+   :height "height"})
+
+(def scale-manager-set-properties
+  {:full-screen-scale-mode "fullScreenScaleMode"
+   :scale-mode "scaleMode"
+   :grid "grid"
+   :parent-node "parentNode"
+   :full-screen-target "fullScreenTarget"
+   :on-orientation-change "onOrientationChange"
+   :parent-is-window "parentIsWindow"
+   :on-full-screen-change "onFullScreenChange"
+   :page-align-horizontally "pageAlignHorizontally"
+   :leave-incorrect-orientation "leaveIncorrectOrientation"
+   :window-constraints "windowConstraints"
+   :on-full-screen-init "onFullScreenInit"
+   :on-size-change "onSizeChange"
+   :page-align-vertically "pageAlignVertically"
+   :enter-incorrect-orientation "enterIncorrectOrientation"
+   :on-full-screen-error "onFullScreenError"})

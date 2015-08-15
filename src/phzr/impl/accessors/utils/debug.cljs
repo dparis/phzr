@@ -1,0 +1,31 @@
+(ns phzr.impl.accessors.utils.debug)
+
+(def debug-get-properties
+  {:line-height "lineHeight"
+   :dirty "dirty"
+   :current-alpha "currentAlpha"
+   :render-shadow "renderShadow"
+   :game "game"
+   :current-y "currentY"
+   :canvas "canvas"
+   :font "font"
+   :sprite "sprite"
+   :column-width "columnWidth"
+   :context "context"
+   :bmd "bmd"
+   :current-x "currentX"})
+
+(def debug-set-properties
+  {:line-height "lineHeight"
+   :dirty "dirty"
+   :current-alpha "currentAlpha"
+   :render-shadow "renderShadow"
+   :game "game"
+   :current-y "currentY"
+   :canvas "canvas"
+   :font "font"
+   :sprite "sprite"
+   :column-width "columnWidth"
+   :context "context"
+   :bmd "bmd"
+   :current-x "currentX"})

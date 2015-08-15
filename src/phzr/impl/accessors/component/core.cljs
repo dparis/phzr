@@ -1,0 +1,29 @@
+(ns phzr.impl.accessors.component.core)
+
+(def core-get-properties
+  {:exists "exists"
+   :animations "animations"
+   :render-order-id "renderOrderID"
+   :key "key"
+   :previous-rotation "previousRotation"
+   :game "game"
+   :name "name"
+   :events "events"
+   :previous-position "previousPosition"
+   :debug "debug"
+   :world "world"
+   :z "z"
+   :pending-destroy "pendingDestroy"
+   :fresh "fresh"})
+
+(def core-set-properties
+  {:exists "exists"
+   :animations "animations"
+   :key "key"
+   :game "game"
+   :name "name"
+   :events "events"
+   :debug "debug"
+   :world "world"
+   :z "z"
+   :pending-destroy "pendingDestroy"})

@@ -1,0 +1,39 @@
+(ns phzr.impl.accessors.device-button)
+
+(def device-button-get-properties
+  {:button-code "buttonCode"
+   :repeats "repeats"
+   :ctrl-key "ctrlKey"
+   :on-up "onUp"
+   :parent "parent"
+   :game "game"
+   :value "value"
+   :on-float "onFloat"
+   :on-down "onDown"
+   :time-down "timeDown"
+   :duration "duration"
+   :time-up "timeUp"
+   :event "event"
+   :shift-key "shiftKey"
+   :is-down "isDown"
+   :is-up "isUp"
+   :alt-key "altKey"})
+
+(def device-button-set-properties
+  {:button-code "buttonCode"
+   :repeats "repeats"
+   :ctrl-key "ctrlKey"
+   :on-up "onUp"
+   :parent "parent"
+   :game "game"
+   :value "value"
+   :on-float "onFloat"
+   :on-down "onDown"
+   :time-down "timeDown"
+   :duration "duration"
+   :time-up "timeUp"
+   :event "event"
+   :shift-key "shiftKey"
+   :is-down "isDown"
+   :is-up "isUp"
+   :alt-key "altKey"})

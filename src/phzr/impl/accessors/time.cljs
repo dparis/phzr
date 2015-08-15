@@ -1,0 +1,31 @@
+(ns phzr.impl.accessors.time)
+
+(def time-get-properties
+  {:pause-duration "pauseDuration"
+   :frames "frames"
+   :events "events"
+   :ms-min "msMin"
+   :physics-elapsed-ms "physicsElapsedMS"
+   :slow-motion "slowMotion"
+   :desired-fps "desiredFps"
+   :advanced-timing "advancedTiming"
+   :fps "fps"
+   :fps-max "fpsMax"
+   :fps-min "fpsMin"
+   :suggested-fps "suggestedFps"
+   :physics-elapsed "physicsElapsed"
+   :ms-max "msMax"})
+
+(def time-set-properties
+  {:pause-duration "pauseDuration"
+   :events "events"
+   :ms-min "msMin"
+   :physics-elapsed-ms "physicsElapsedMS"
+   :slow-motion "slowMotion"
+   :desired-fps "desiredFps"
+   :advanced-timing "advancedTiming"
+   :fps-max "fpsMax"
+   :fps-min "fpsMin"
+   :suggested-fps "suggestedFps"
+   :physics-elapsed "physicsElapsed"
+   :ms-max "msMax"})

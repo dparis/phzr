@@ -1,0 +1,43 @@
+(ns phzr.impl.accessors.events)
+
+(def events-get-properties
+  {:on-out-of-bounds "onOutOfBounds"
+   :on-animation-complete "onAnimationComplete"
+   :parent "parent"
+   :on-input-over "onInputOver"
+   :on-input-up "onInputUp"
+   :on-input-out "onInputOut"
+   :on-drag-stop "onDragStop"
+   :on-revived "onRevived"
+   :on-enter-bounds "onEnterBounds"
+   :on-destroy "onDestroy"
+   :on-added-to-group "onAddedToGroup"
+   :on-input-down "onInputDown"
+   :on-animation-start "onAnimationStart"
+   :on-drag-start "onDragStart"
+   :on-killed "onKilled"
+   :on-removed-from-group "onRemovedFromGroup"
+   :on-drag-update "onDragUpdate"
+   :on-removed-from-world "onRemovedFromWorld"
+   :on-animation-loop "onAnimationLoop"})
+
+(def events-set-properties
+  {:on-out-of-bounds "onOutOfBounds"
+   :on-animation-complete "onAnimationComplete"
+   :parent "parent"
+   :on-input-over "onInputOver"
+   :on-input-up "onInputUp"
+   :on-input-out "onInputOut"
+   :on-drag-stop "onDragStop"
+   :on-revived "onRevived"
+   :on-enter-bounds "onEnterBounds"
+   :on-destroy "onDestroy"
+   :on-added-to-group "onAddedToGroup"
+   :on-input-down "onInputDown"
+   :on-animation-start "onAnimationStart"
+   :on-drag-start "onDragStart"
+   :on-killed "onKilled"
+   :on-removed-from-group "onRemovedFromGroup"
+   :on-drag-update "onDragUpdate"
+   :on-removed-from-world "onRemovedFromWorld"
+   :on-animation-loop "onAnimationLoop"})
