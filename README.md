@@ -2,7 +2,7 @@
 
 A ClojureScript wrapper for the Phaser HTML5 game framework.
 
-![](https://clojars.org/compojure/latest-version.svg)
+![](https://clojars.org/phzr/latest-version.svg)
 
 
 ## What is Phaser?
