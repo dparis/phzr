@@ -35,7 +35,18 @@ Along with the namespace wrappers, phzr also
 [extends](src/phzr/impl/extend/core.cljs#L33) each Phaser class to implement a
 number of useful Clojure protocols. Currently, this allows functions like `get`,
 `get-in`, and `seq` to work on Phaser objects. As phzr develops, it may extend
-Phaser classes to more types.
+Phaser classes to more core protocols. When working with Phaser objects in phzr,
+only properties and static constants are exposed through the protocol 
+implementations. All property and constant names have been converted to 
+Clojure-style kebab-case keywords.
+
+
+Additionally, Phaser classes implement the IPhaserObj protocol defined in the
+phzr.core namespace. Currently, this protocol specifies a function `pset!`,
+which allows phaser object properties to bet mutated directly. The `pset!` 
+function works similarly to `aset`, differing in that it accepts only the
+keyword-ized versions of the object property names, and will not allow mutations
+on properties marked as constant or read-only.
 
 
 ## How can I contribute?
