@@ -2,6 +2,8 @@
 
 A ClojureScript wrapper for the Phaser HTML5 game framework.
 
+![](https://clojars.org/compojure/latest-version.svg)
+
 
 ## What is Phaser?
 
@@ -13,10 +15,9 @@ as well as many other feature.
 
 ## How do I get started?
 
-Once phzr has been deployed to clojars (coming soon!), just include the phzr
-library in your ClojureScript project's build dependencies. The phzr library
-makes use of the awesome cljsjs package system to pull in the correct Phaser
-javascript source automatically.
+Just include the phzr library in your ClojureScript project's build
+dependencies. The phzr library makes use of the awesome cljsjs package
+system to pull in the correct Phaser javascript source automatically.
 
 Once you've got phzr installed in your project, check out the Phaser
 [documentation](http://phaser.io/docs) and
@@ -36,14 +37,14 @@ Along with the namespace wrappers, phzr also
 number of useful Clojure protocols. Currently, this allows functions like `get`,
 `get-in`, and `seq` to work on Phaser objects. As phzr develops, it may extend
 Phaser classes to more core protocols. When working with Phaser objects in phzr,
-only properties and static constants are exposed through the protocol 
-implementations. All property and constant names have been converted to 
+only properties and static constants are exposed through the protocol
+implementations. All property and constant names have been converted to
 Clojure-style kebab-case keywords.
 
 
 Additionally, Phaser classes implement the IPhaserObj protocol defined in the
 phzr.core namespace. Currently, this protocol specifies a function `pset!`,
-which allows phaser object properties to bet mutated directly. The `pset!` 
+which allows phaser object properties to bet mutated directly. The `pset!`
 function works similarly to `aset`, differing in that it accepts only the
 keyword-ized versions of the object property names, and will not allow mutations
 on properties marked as constant or read-only.
