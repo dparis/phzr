@@ -43,11 +43,11 @@
     * array-set (Phaser.ArraySet) - Targeted instance for method
     * key (string) - The name of the property with the function to call.
     * parameter (*) - Additional parameters that will be passed to the callback."
-  ([array-set key parameter]
+  ([array-set key & parameters]
    (phaser->clj
     (.callAll array-set
               (clj->phaser key)
-              (clj->phaser parameter)))))
+              (clj->phaser parameters)))))
 
 (defn exists
   "Checks for the item within this list.
