@@ -47,7 +47,7 @@ Clojure-style kebab-case keywords.
 
 Additionally, Phaser classes implement the IPhaserObj protocol defined in the
 phzr.core namespace. Currently, this protocol specifies a function `pset!`,
-which allows phaser object properties to bet mutated directly. The `pset!`
+which allows phaser object properties to be mutated directly. The `pset!`
 function works similarly to `aset`, differing in that it accepts only the
 keyword-ized versions of the object property names, and will not allow mutations
 on properties marked as constant or read-only.
