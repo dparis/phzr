@@ -1,6 +1,6 @@
 (ns phzr.impl.accessors.group)
 
-(def ^:private group-constants
+(def group-constants
   {:return-child "RETURN_CHILD"
    :return-none "RETURN_NONE"
    :return-total "RETURN_TOTAL"

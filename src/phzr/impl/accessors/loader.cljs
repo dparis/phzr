@@ -1,6 +1,6 @@
 (ns phzr.impl.accessors.loader)
 
-(def ^:private loader-constants
+(def loader-constants
   {:physics-lime-corona-json "PHYSICS_LIME_CORONA_JSON"
    :physics-phaser-json "PHYSICS_PHASER_JSON"
    :texture-atlas-json-array "TEXTURE_ATLAS_JSON_ARRAY"

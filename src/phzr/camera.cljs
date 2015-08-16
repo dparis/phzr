@@ -23,6 +23,11 @@
                       (clj->phaser width)
                       (clj->phaser height))))
 
+(defn const
+  [k]
+  (when-let [cn (get phzr.impl.accessors.camera/camera-constants k)]
+    (aget js/Phaser.Camera cn)))
+
 (defn check-bounds
   "Method called to ensure the camera doesn't venture outside of the game world."
   ([camera]

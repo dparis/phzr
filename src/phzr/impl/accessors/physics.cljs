@@ -1,6 +1,6 @@
 (ns phzr.impl.accessors.physics)
 
-(def ^:private physics-constants
+(def physics-constants
   {:arcade "ARCADE"
    :box-2d "BOX2D"
    :chipmunk "CHIPMUNK"

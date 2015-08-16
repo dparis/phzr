@@ -14,6 +14,11 @@
    (js/Phaser.Pointer. (clj->phaser game)
                        (clj->phaser id))))
 
+(defn const
+  [k]
+  (when-let [cn (get phzr.impl.accessors.pointer/pointer-constants k)]
+    (aget js/Phaser.Pointer cn)))
+
 (defn just-pressed
   "The Pointer is considered justPressed if the time it was pressed onto the touchscreen or clicked is less than justPressedRate.
   Note that calling justPressed doesn't reset the pressed status of the Pointer, it will return `true` for as long as the duration is valid.

@@ -1,6 +1,6 @@
 (ns phzr.impl.accessors.cache)
 
-(def ^:private cache-constants
+(def cache-constants
   {:binary "BINARY"
    :bitmapdata "BITMAPDATA"
    :bitmapfont "BITMAPFONT"

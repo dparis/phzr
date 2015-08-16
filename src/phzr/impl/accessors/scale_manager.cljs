@@ -1,6 +1,6 @@
 (ns phzr.impl.accessors.scale-manager)
 
-(def ^:private scale-manager-constants
+(def scale-manager-constants
   {:exact-fit "EXACT_FIT"
    :no-scale "NO_SCALE"
    :resize "RESIZE"

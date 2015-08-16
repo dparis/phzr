@@ -12,6 +12,11 @@
   ([game]
    (js/Phaser.Physics.Arcade. (clj->phaser game))))
 
+(defn const
+  [k]
+  (when-let [cn (get phzr.impl.accessors.physics.arcade/arcade-constants k)]
+    (aget js/Phaser.Physics.Arcade cn)))
+
 (defn accelerate-to-object
   "Sets the acceleration.x/y property on the display object so it will move towards the target at the given speed (in pixels per second sq.)
   You must give a maximum speed value, beyond which the display object won't go any faster.

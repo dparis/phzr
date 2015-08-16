@@ -48,6 +48,11 @@
                        (clj->phaser width)
                        (clj->phaser height))))
 
+(defn const
+  [k]
+  (when-let [cn (get phzr.impl.accessors.tilemap/tilemap-constants k)]
+    (aget js/Phaser.Tilemap cn)))
+
 (defn add-tileset-image
   "Adds an image to the map to be used as a tileset. A single map may use multiple tilesets.
   Note that the tileset name can be found in the JSON file exported from Tiled, or in the Tiled editor.

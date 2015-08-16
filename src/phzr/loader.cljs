@@ -19,6 +19,11 @@
   ([game]
    (js/Phaser.Loader. (clj->phaser game))))
 
+(defn const
+  [k]
+  (when-let [cn (get phzr.impl.accessors.loader/loader-constants k)]
+    (aget js/Phaser.Loader cn)))
+
 (defn add-sync-point
   "Add a synchronization point to a specific file/asset in the load queue.
 

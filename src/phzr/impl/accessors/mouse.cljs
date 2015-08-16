@@ -1,6 +1,6 @@
 (ns phzr.impl.accessors.mouse)
 
-(def ^:private mouse-constants
+(def mouse-constants
   {:back-button "BACK_BUTTON"
    :forward-button "FORWARD_BUTTON"
    :left-button "LEFT_BUTTON"

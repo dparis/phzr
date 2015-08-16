@@ -1,6 +1,6 @@
 (ns phzr.impl.accessors.camera)
 
-(def ^:private camera-constants
+(def camera-constants
   {:follow-lockon "FOLLOW_LOCKON"
    :follow-platformer "FOLLOW_PLATFORMER"
    :follow-topdown "FOLLOW_TOPDOWN"

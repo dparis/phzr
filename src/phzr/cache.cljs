@@ -31,6 +31,11 @@
   ([game]
    (js/Phaser.Cache. (clj->phaser game))))
 
+(defn const
+  [k]
+  (when-let [cn (get phzr.impl.accessors.cache/cache-constants k)]
+    (aget js/Phaser.Cache cn)))
+
 (defn add-binary
   "Add a binary object in to the cache.
 

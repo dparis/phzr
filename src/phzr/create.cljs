@@ -15,6 +15,11 @@
   ([game]
    (js/Phaser.Create. (clj->phaser game))))
 
+(defn const
+  [k]
+  (when-let [cn (get phzr.impl.accessors.create/create-constants k)]
+    (aget js/Phaser.Create cn)))
+
 (defn grid
   "Creates a grid texture based on the given dimensions.
 

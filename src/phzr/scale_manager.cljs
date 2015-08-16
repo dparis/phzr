@@ -17,6 +17,11 @@
                             (clj->phaser width)
                             (clj->phaser height))))
 
+(defn const
+  [k]
+  (when-let [cn (get phzr.impl.accessors.scale-manager/scale-manager-constants k)]
+    (aget js/Phaser.ScaleManager cn)))
+
 (defn force-orientation
   "Force the game to run in only one orientation.
 

@@ -50,6 +50,11 @@
                      (clj->phaser enable-body)
                      (clj->phaser physics-body-type))))
 
+(defn const
+  [k]
+  (when-let [cn (get phzr.impl.accessors.group/group-constants k)]
+    (aget js/Phaser.Group cn)))
+
 (defn add
   "Adds an existing object as the top child in this group.
 

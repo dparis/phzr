@@ -12,6 +12,11 @@
   ([game]
    (js/Phaser.Input. (clj->phaser game))))
 
+(defn const
+  [k]
+  (when-let [cn (get phzr.impl.accessors.input/input-constants k)]
+    (aget js/Phaser.Input cn)))
+
 (defn add-move-callback
   "Adds a callback that is fired every time the activePointer receives a DOM move event such as a mousemove or touchmove.
 

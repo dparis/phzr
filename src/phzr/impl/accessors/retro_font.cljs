@@ -1,6 +1,6 @@
 (ns phzr.impl.accessors.retro-font)
 
-(def ^:private retro-font-constants
+(def retro-font-constants
   {:align-center "ALIGN_CENTER"
    :align-left "ALIGN_LEFT"
    :align-right "ALIGN_RIGHT"

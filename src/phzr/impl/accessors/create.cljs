@@ -1,6 +1,6 @@
 (ns phzr.impl.accessors.create)
 
-(def ^:private create-constants
+(def create-constants
   {:palette-arne "PALETTE_ARNE"
    :palette-c64 "PALETTE_C64"
    :palette-cga "PALETTE_CGA"

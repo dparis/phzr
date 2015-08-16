@@ -1,6 +1,6 @@
 (ns phzr.impl.accessors.tween-data)
 
-(def ^:private tween-data-constants
+(def tween-data-constants
   {:complete "COMPLETE"
    :looped "LOOPED"
    :pending "PENDING"

@@ -13,6 +13,11 @@
   ([parent]
    (js/Phaser.TweenData. (clj->phaser parent))))
 
+(defn const
+  [k]
+  (when-let [cn (get phzr.impl.accessors.tween-data/tween-data-constants k)]
+    (aget js/Phaser.TweenData cn)))
+
 (defn from
   "Sets this tween to be a `from` tween on the properties given. A `from` tween sets the target to the destination value and tweens to its current value.
   For example a Sprite with an `x` coordinate of 100 tweened from `x` 500 would be set to `x` 500 and then tweened to `x` 100 by giving a properties object of `{ x: 500 }`.

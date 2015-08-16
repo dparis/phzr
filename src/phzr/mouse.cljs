@@ -18,6 +18,11 @@
   ([game]
    (js/Phaser.Mouse. (clj->phaser game))))
 
+(defn const
+  [k]
+  (when-let [cn (get phzr.impl.accessors.mouse/mouse-constants k)]
+    (aget js/Phaser.Mouse cn)))
+
 (defn on-mouse-down
   "The internal method that handles the mouse down event from the browser.
 

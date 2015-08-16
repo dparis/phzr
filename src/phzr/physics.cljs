@@ -21,6 +21,11 @@
    (js/Phaser.Physics. (clj->phaser game)
                        (clj->phaser physics-config))))
 
+(defn const
+  [k]
+  (when-let [cn (get phzr.impl.accessors.physics/physics-constants k)]
+    (aget js/Phaser.Physics cn)))
+
 (defn destroy
   "Destroys all active physics systems. Usually only called on a Game Shutdown, not on a State swap."
   ([physics]

@@ -1,6 +1,6 @@
 (ns phzr.impl.accessors.input)
 
-(def ^:private input-constants
+(def input-constants
   {:max-pointers "MAX_POINTERS"
    :mouse-overrides-touch "MOUSE_OVERRIDES_TOUCH"
    :mouse-touch-combine "MOUSE_TOUCH_COMBINE"

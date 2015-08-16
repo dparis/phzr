@@ -1,6 +1,6 @@
 (ns phzr.impl.accessors.pointer)
 
-(def ^:private pointer-constants
+(def pointer-constants
   {:back-button "BACK_BUTTON"
    :eraser-button "ERASER_BUTTON"
    :forward-button "FORWARD_BUTTON"

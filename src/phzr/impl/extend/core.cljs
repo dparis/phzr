@@ -14,14 +14,6 @@
           (name k)
           " for Phaser object."))))
 
-(defn ^:private phaser-const-get
-  [phaser-class k constants not-found]
-  (if-let [kstr (get constants k)]
-    (if-let [v (aget phaser-class kstr)]
-      v
-      not-found)
-    not-found))
-
 (defn ^:private phaser-get
   [o k get-properties not-found]
   (if-let [kstr (get get-properties k)]
@@ -34,9 +26,7 @@
   [phaser-class get-properties set-properties constants]
   (let [get-keys     (set (keys get-properties))
         set-keys     (set (keys set-properties))
-        get-set-keys (set (concat get-keys set-keys))
-        const-keys   (set (keys constants))
-        all-keys     (set (concat const-keys get-set-keys))]
+        get-set-keys (set (concat get-keys set-keys))]
     (if-not (aget phaser-class "prototype")
       (println "WARNING: ATTEMPTING TO EXTEND NATIVE JS OBJECT" phaser-class)
       (extend-type phaser-class
@@ -46,12 +36,9 @@
 
         ISeqable
         (-seq [o]
-          (map (fn [k] [k (get o k)]) all-keys))
+          (map (fn [k] [k (get o k)]) get-set-keys))
 
         ILookup
         (-lookup
           ([o k] (-lookup o k nil))
-          ([o k nf]
-           (if (contains? const-keys k)
-             (phaser-const-get phaser-class k constants nf)
-             (phaser-get o k get-properties nf))))))))
+          ([o k nf] (phaser-get o k get-properties nf)))))))

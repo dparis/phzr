@@ -22,6 +22,11 @@
    (js/Phaser.Timer. (clj->phaser game)
                      (clj->phaser auto-destroy))))
 
+(defn const
+  [k]
+  (when-let [cn (get phzr.impl.accessors.timer/timer-constants k)]
+    (aget js/Phaser.Timer cn)))
+
 (defn add
   "Adds a new Event to this Timer.
 

@@ -1,6 +1,6 @@
 (ns phzr.impl.accessors.timer)
 
-(def ^:private timer-constants
+(def timer-constants
   {:half "HALF"
    :minute "MINUTE"
    :quarter "QUARTER"

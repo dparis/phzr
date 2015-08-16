@@ -1,6 +1,6 @@
 (ns phzr.impl.accessors.tilemap)
 
-(def ^:private tilemap-constants
+(def tilemap-constants
   {:csv "CSV"
    :east "EAST"
    :north "NORTH"

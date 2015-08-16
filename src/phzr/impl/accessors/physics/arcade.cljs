@@ -1,6 +1,6 @@
 (ns phzr.impl.accessors.physics.arcade)
 
-(def ^:private arcade-constants
+(def arcade-constants
   {:bottom-top "BOTTOM_TOP"
    :left-right "LEFT_RIGHT"
    :right-left "RIGHT_LEFT"

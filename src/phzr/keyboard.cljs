@@ -15,6 +15,11 @@
   ([game]
    (js/Phaser.Keyboard. (clj->phaser game))))
 
+(defn const
+  [k]
+  (when-let [cn (get phzr.impl.accessors.keyboard/keyboard-constants k)]
+    (aget js/Phaser.Keyboard cn)))
+
 (defn add-callbacks
   "Add callbacks to the Keyboard handler so that each time a key is pressed down or released the callbacks are activated.
 

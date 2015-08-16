@@ -70,6 +70,11 @@
                          (clj->phaser x-offset)
                          (clj->phaser y-offset))))
 
+(defn const
+  [k]
+  (when-let [cn (get phzr.impl.accessors.retro-font/retro-font-constants k)]
+    (aget js/Phaser.RetroFont cn)))
+
 (defn build-retro-font-text
   "Updates the texture with the new text."
   ([retro-font]
