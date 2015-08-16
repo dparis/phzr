@@ -4,7 +4,8 @@
 (defprotocol IPhaserObj
   (pset! [this k v]))
 
-(def blend-modes
+
+(def ^:private blend-modes
   {:normal      0
    :add         1
    :multiply    2
@@ -23,12 +24,12 @@
    :color       15
    :luminosity  16})
 
-(def scale-modes
+(def ^:private scale-modes
   {:default 0
    :linear  0
    :nearest 1})
 
-(def phaser-constants
+(def ^:private phaser-constants
   {:version          "2.4.2"
    :auto             0
    :canvas           1
@@ -71,6 +72,12 @@
    :blend-modes      blend-modes
    :scale-modes      scale-modes})
 
-(defn games
+(defn ^:private games
   []
   js/Phaser.GAMES)
+
+(defn const
+  [k]
+  (if (= k :games)
+    (games)
+    (get phaser-constants k)))
