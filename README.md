@@ -12,6 +12,9 @@ for Canves and WebGL powered browser games. It supports several physics
 libraries, tilemaps, sprite and vector animations, and audio/video rendering,
 as well as many other feature.
 
+Check out the [phzr-demo](https://github.com/dparis/phzr-demo) app for some
+examples!
+
 
 ## How do I get started?
 
