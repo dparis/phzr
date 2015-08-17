@@ -8,9 +8,9 @@ A ClojureScript wrapper for the Phaser HTML5 game framework.
 ## What is Phaser?
 
 [Phaser](http://phaser.io) is a fast, free and fun open source framework
-for Canves and WebGL powered browser games. It supports several physics
+for Canvas and WebGL powered browser games. It supports several physics
 libraries, tilemaps, sprite and vector animations, and audio/video rendering,
-as well as many other feature.
+as well as many other features.
 
 
 ## Okay, so what is phzr?
